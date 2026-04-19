@@ -207,7 +207,11 @@ function mdToHtml(md) {
       .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
       .replace(/\*(.+?)\*/g, '<em>$1</em>')
       .replace(/`(.+?)`/g, '<code>$1</code>')
-      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
+      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, function(m, text, url) {
+        const km = url.match(/^([a-z]+)\.md$/);
+        if (km) return '<a href="#" onclick="showPage(\'' + km[1] + '\');return false;">' + text + '</a>';
+        return '<a href="' + url + '" target="_blank">' + text + '</a>';
+      });
   }
 
   for (let i = 0; i < lines.length; i++) {
