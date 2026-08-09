@@ -19,7 +19,6 @@ Gesammeltes Segler-Wissen aus den Trans-Ocean WhatsApp-Gruppen — aufbereitet a
 | Mittelmeer | Winterlager, Bürokratie, Wetter |
 | Karibik | Einklarierung, Inseln, Häfen, Kommunikation |
 | Atlantik | Überquerungsrouten, Rallyes, Sicherheit |
-| Medizin | Bordapotheke, Antibiotika, Seekrankheit, Notfall |
 | Sicherheit | Rettungswesten, MOB, Anker, EPIRB, Brandschutz |
 | Funk | VHF, SSB/HF, Amateurfunk, Navtex, Meshtastic |
 | Navigation | Seekarten, Chartplotter, Tablets, AIS, Wetter-Apps |
