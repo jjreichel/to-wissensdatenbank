@@ -24,12 +24,12 @@ Seit dem 11. August 2026 verbindlich festgeschrieben in **[GRUNDSAETZE.md](GRUND
 * [x] Fundstellen-Verfahren aktiv und im [README](README.md) dokumentiert
 * [x] Ausgeschlossene Quellgruppen verbindlich in den [Grundsätzen](GRUNDSAETZE.md) festgeschrieben
 
-## Phase 2 · Transparenz herstellen *(2 bis 4 Wochen)*
+## Phase 2 · Transparenz herstellen *(in Arbeit)*
 
-* [ ] Methodik-Seite: Quellgruppen, Erhebungsweg, Auswahlkriterien, Grenzen der Sammlung
-* [ ] Matrix Kapitel zu Quellgruppen (die Zuordnung ist thematisch, nicht eins zu eins)
-* [ ] Kennzeichnung je Eintrag: Einzelmeinung oder mehrfach berichtet, Herkunftsgruppe, Zeitraum
-* [ ] Hinweise bei sicherheitsrelevanten Themen (u. a. Orca-Interaktionen, Versicherung, Recht)
+* [x] [Methodik-Seite](https://jjreichel.github.io/to-wissensdatenbank/#methodik): Quellgruppen, Auswahlkriterien, Grenzen der Sammlung — der Erhebungsweg ist noch zu ergänzen
+* [x] Matrix Kapitel zu Quellgruppen — aus dem Nachrichtenverlauf **gemessen**, nicht geschätzt; Verfahren und Einschränkungen stehen auf der Methodik-Seite
+* [~] Kennzeichnung je Eintrag: Belegdichte umgesetzt (102 Einträge mit „mehrfach berichtet", „Einzelmeinung" oder „umstritten"), dazu „außerhalb TO" für Quellen ausserhalb des Vereins. **Herkunftsgruppe und Zeitraum je Eintrag fehlen weiterhin** — sie sind im veröffentlichten Bestand nicht hinterlegt und liessen sich nur durch eine Neuauswertung gegen die Quellen ergänzen
+* [x] Hinweise bei sicherheitsrelevanten Themen — Sicherheit, Versicherungen, Orca, Mittelmeer, Karibik, Lossegler
 
 ## Phase 3 · Aktualität lösen *(1 bis 3 Monate)*
 
