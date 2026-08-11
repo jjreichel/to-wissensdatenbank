@@ -21,6 +21,8 @@ Nicht veröffentlicht wird:
 
 Beiträge werden auf die Sachaussage reduziert und in unpersönlicher Form wiedergegeben („mehrfach berichtet", „eine Gegenposition lautet"). Kontroversen werden als Positionen abgebildet, nicht als Personen.
 
+**Die Verdichtung erfolgt mit KI-Unterstützung.** Auswahl, Freigabe und Verantwortung liegen beim Betreiber. Ein Eintrag ist eine Zusammenfassung und lässt sich nicht auf eine einzelne Nachricht zurückführen; die fachliche Richtigkeit ist nicht systematisch geprüft. Der Erhebungsweg samt Folgen ist auf der Methodik-Seite offengelegt.
+
 ## 2. Zugelassene Quellgruppen
 
 Ausgewertet werden ausschließlich TO-Gruppen mit **sachlich-technischem Zuschnitt**:

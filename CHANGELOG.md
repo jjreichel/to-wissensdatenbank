@@ -4,6 +4,14 @@ Dokumentiert Löschungen, Anonymisierungen und Änderungen an den [Grundsätzen]
 
 ---
 
+## 11. August 2026 — Erhebungsweg offengelegt
+
+Die Methodik-Seite nennt jetzt den Erhebungsweg: die Verdichtung der Gruppenbeiträge zu Einträgen erfolgte **mit KI-Unterstützung**, Auswahl und Verantwortung liegen beim Betreiber. Offengelegt sind auch die Folgen — kein Nachweis je Eintrag, Verzerrungsrisiko durch Zusammenfassung, keine systematische fachliche Prüfung.
+
+Dazu ein eigener Abschnitt zu dem Umstand, dass **KI-Antworten in den TO-Gruppen unerwünscht bis verboten sind**: die Unterscheidung zur KI-Antwort in der Gruppe wird benannt, der Einwand aber nicht weggewischt, weil das Risiko verwandt ist — eine glatte Zusammenfassung wirkt sicherer als ihre Quelle. Die Bewertung gehört zur offenen Governance-Frage der Phase 4.
+
+Grundsätze und README entsprechend ergänzt.
+
 ## 11. August 2026 — Phase 2 begonnen
 
 **Hinweise bei sicherheitsrelevanten Themen:** Warntext am Kapitelanfang für Sicherheit, Versicherungen, Orca-Interaktionen (Diverses), Mittelmeer, Karibik und Lossegler.

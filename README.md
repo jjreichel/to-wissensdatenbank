@@ -84,7 +84,7 @@ Meldungen werden vertraulich behandelt. Ebenso willkommen sind Hinweise auf vera
 
 ## Grenzen
 
-Die Sammlung ist eine Momentaufnahme von Community-Wissen, keine geprüfte Fachauskunft. Einträge können veraltet oder falsch sein. Sie **ersetzt keinen fachlichen Rat**, insbesondere nicht bei medizinischen, rechtlichen, versicherungs- oder sicherheitsrelevanten Fragen.
+Die Sammlung ist eine Momentaufnahme von Community-Wissen, keine geprüfte Fachauskunft. Einträge können veraltet oder falsch sein. Sie sind **mit KI-Unterstützung aus den Gruppenbeiträgen verdichtet** und fachlich nicht systematisch geprüft — der Erhebungsweg und seine Folgen stehen auf der Methodik-Seite. Sie **ersetzt keinen fachlichen Rat**, insbesondere nicht bei medizinischen, rechtlichen, versicherungs- oder sicherheitsrelevanten Fragen.
 
 Dies ist ein privates Projekt und keine Veröffentlichung des Trans-Ocean e. V.
 
