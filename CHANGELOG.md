@@ -4,6 +4,16 @@ Dokumentiert Löschungen, Anonymisierungen und Änderungen an den [Grundsätzen]
 
 ---
 
+## 11. August 2026 — Phase 2 begonnen
+
+**Hinweise bei sicherheitsrelevanten Themen:** Warntext am Kapitelanfang für Sicherheit, Versicherungen, Orca-Interaktionen (Diverses), Mittelmeer, Karibik und Lossegler.
+
+**Kennzeichnung der Belegdichte:** 102 Einträge, die im Wortlaut selbst aussagen, wie breit sie belegt sind, tragen nun „mehrfach berichtet", „Einzelmeinung" oder „umstritten". Da 96 Prozent der Einträge keine solche Angabe enthalten, weist eine Legende ausdrücklich darauf hin, dass ein Eintrag ohne Kennzeichnung **keine** Einzelmeinung ist.
+
+**Herkunft außerhalb Trans-Ocean:** Der Abschnitt Rotes Meer / Suez-Route (Diverses), der Malta-Abschnitt (Mechanik) und Angaben zur Barfußroute (Sicherheit) sind als „außerhalb TO" gekennzeichnet, siehe Abschnitt 2 der [Grundsätze](GRUNDSAETZE.md).
+
+**Nachtrag zur Phase-1-Prüfung:** Im Rotmeer-Abschnitt war eine Privatperson namentlich genannt — Administrator einer externen Gruppe, in zwei abweichenden Schreibweisen. Nach Abschnitt 4 der Grundsätze fällt sie unter keine der erlaubten Kategorien; beide Nennungen wurden durch die Funktionsbezeichnung ersetzt. Der Name war der Phase-1-Prüfung entgangen, weil er nicht auf der verwendeten Vornamensliste stand.
+
 ## 11. August 2026 — Bestandsprüfung Phase 1
 
 Vollständige Prüfung des veröffentlichten Bestands (15 Kapitel, rund 352.000 Zeichen) auf personenbezogene Angaben, wiedererkennbare Einzelfälle und wörtliche Übernahmen.

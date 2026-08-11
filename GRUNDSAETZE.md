@@ -29,6 +29,12 @@ Elektrik · Motorentechnik · Mechanik · Satellitenkommunikation · Wassersyste
 
 Die Zuordnung von Kapiteln zu Quellgruppen ist **thematisch, nicht eins zu eins** — ein Kapitel kann aus mehreren Gruppen gespeist sein, eine Gruppe kann zu mehreren Kapiteln beitragen.
 
+### Quellen außerhalb Trans-Ocean
+
+Einzelne Themen stammen nicht aus TO-Gruppen, sondern aus anderen Seglergruppen — insbesondere zur **Rotmeer-Passage**, zur **Barfußroute** und zu **Malta**. Diese Inhalte sind in der Weboberfläche mit **„außerhalb TO"** gekennzeichnet, am betreffenden Abschnitt oder Eintrag.
+
+Für sie gelten dieselben Regeln wie für TO-Inhalte: nur verdichtetes Sachwissen, keine Zitate, kein Personenbezug. Die Kennzeichnung dient der Einordnung — Inhalte von außerhalb TO sind nicht durch die Erfahrung der TO-Gemeinschaft gedeckt.
+
 ## 3. Dauerhaft ausgeschlossene Quellgruppen
 
 Aus den folgenden Gruppen wird **grundsätzlich nichts übernommen** — unabhängig davon, wie sachlich ein einzelner Beitrag erscheint:
