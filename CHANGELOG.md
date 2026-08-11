@@ -10,7 +10,7 @@ Dokumentiert Löschungen, Anonymisierungen und Änderungen an den [Grundsätzen]
 
 **Kennzeichnung der Belegdichte:** 102 Einträge, die im Wortlaut selbst aussagen, wie breit sie belegt sind, tragen nun „mehrfach berichtet", „Einzelmeinung" oder „umstritten". Da 96 Prozent der Einträge keine solche Angabe enthalten, weist eine Legende ausdrücklich darauf hin, dass ein Eintrag ohne Kennzeichnung **keine** Einzelmeinung ist.
 
-**Herkunft außerhalb Trans-Ocean:** Der Abschnitt Rotes Meer / Suez-Route (Diverses), der Malta-Abschnitt (Mechanik) und Angaben zur Barfußroute (Sicherheit) sind als „außerhalb TO" gekennzeichnet, siehe Abschnitt 2 der [Grundsätze](GRUNDSAETZE.md).
+**Herkunft außerhalb Trans-Ocean:** Der Malta-Abschnitt (Mechanik) und Angaben zur Barfußroute (Sicherheit) sind als „außerhalb TO" gekennzeichnet. Der Abschnitt Rotes Meer / Suez-Route (Diverses) trägt „teils außerhalb TO" — dort sind TO-Gruppe und externe Gruppen beide eingeflossen, die Zuordnung je Eintrag ist nicht dokumentiert. Siehe Abschnitt 2 der [Grundsätze](GRUNDSAETZE.md).
 
 **Nachtrag zur Phase-1-Prüfung:** Im Rotmeer-Abschnitt war eine Privatperson namentlich genannt — Administrator einer externen Gruppe, in zwei abweichenden Schreibweisen. Nach Abschnitt 4 der Grundsätze fällt sie unter keine der erlaubten Kategorien; beide Nennungen wurden durch die Funktionsbezeichnung ersetzt. Der Name war der Phase-1-Prüfung entgangen, weil er nicht auf der verwendeten Vornamensliste stand.
 

@@ -336,6 +336,7 @@
     white-space: nowrap;
     font-weight: 400;
   }
+  .orig-extern.orig-mixed { background: none; color: var(--ink-mute); border: 1px solid var(--ink-mute); }
   h2 .orig-extern, h3 .orig-extern { vertical-align: 5px; }
   .orig-note {
     margin: -14px 0 22px;
@@ -1222,44 +1223,48 @@ const PROV_RULES = [
 // hier eintragen, sobald weitere Nicht-TO-Quellen einfließen.
 const NON_TO = {
   diverses: {
-    headings: ['Rotes Meer / Suez-Route'],
-    note: 'Quellen außerhalb Trans-Ocean: regionale Seglergruppen zur Rotmeer-Passage sowie die Gruppe Red Sea Passage.',
+    headings: [{
+      text: 'Rotes Meer / Suez-Route',
+      mixed: true,
+      note: 'Herkunft gemischt: neben der TO-Gruppe zur Rotmeer-Passage sind Gruppen außerhalb Trans-Ocean eingeflossen, insbesondere die Gruppe Red Sea Passage und regionale Rotmeer-Gruppen. Welcher Eintrag aus welcher Quelle stammt, ist nicht dokumentiert.',
+    }],
   },
   mechanik: {
-    headings: ['Malta'],
-    note: 'Quellen außerhalb Trans-Ocean: Malta-Seglergruppen (u. a. Channel 16, Malta Technical).',
+    headings: [{
+      text: 'Malta',
+      note: 'Quellen außerhalb Trans-Ocean: Malta-Seglergruppen, unter anderem Channel 16 und Malta Technical.',
+    }],
   },
   sicherheit: {
-    entries: [/Barfußroute/],
-    note: 'Einzelne Angaben zur Barfußroute stammen aus Gruppen außerhalb Trans-Ocean.',
+    entries: [{ re: /Barfußroute/ }],
   },
 };
 
 function annotateOrigin(container, key) {
   const cfg = NON_TO[key];
-  if (!cfg) return 0;
-  let n = 0;
-  const badge = () => {
+  if (!cfg) return [];
+  const used = new Set();
+  const badge = (mixed) => {
     const s = document.createElement('span');
-    s.className = 'orig-extern';
-    s.textContent = 'außerhalb TO';
+    s.className = 'orig-extern' + (mixed ? ' orig-mixed' : '');
+    s.textContent = mixed ? 'teils außerhalb TO' : 'außerhalb TO';
+    used.add(s.textContent);
     return s;
   };
   (cfg.headings || []).forEach(h => {
     container.querySelectorAll('h2, h3').forEach(el => {
-      if (el.textContent.trim() !== h) return;
-      el.appendChild(badge());
-      el.insertAdjacentHTML('afterend', `<p class="orig-note">${cfg.note}</p>`);
-      n++;
+      if (el.textContent.trim() !== h.text) return;
+      el.appendChild(badge(h.mixed));
+      if (h.note) el.insertAdjacentHTML('afterend', `<p class="orig-note">${h.note}</p>`);
     });
   });
-  (cfg.entries || []).forEach(re => {
+  (cfg.entries || []).forEach(e => {
     container.querySelectorAll('li').forEach(li => {
       if (li.querySelector('li') || li.querySelector('.orig-extern')) return;
-      if (re.test(li.textContent)) { li.appendChild(badge()); n++; }
+      if (e.re.test(li.textContent)) li.appendChild(badge(e.mixed));
     });
   });
-  return n;
+  return [...used];
 }
 
 function annotateProvenance(container) {
@@ -1278,15 +1283,19 @@ function annotateProvenance(container) {
   return n;
 }
 
-function provLegendHtml(n, nExtern) {
-  if (!n && !nExtern) return '';
+function provLegendHtml(n, origLabels) {
+  if (!n && !origLabels.length) return '';
   const belegdichte = n ? `<span class="prov prov-mehrfach">mehrfach berichtet</span>
     <span class="prov prov-einzel">Einzelmeinung</span>
     <span class="prov prov-umstritten">umstritten</span>` : '';
-  const extern = nExtern ? `<span class="orig-extern">außerhalb TO</span>` : '';
+  const extern = origLabels.map(l =>
+    `<span class="orig-extern${l.startsWith('teils') ? ' orig-mixed' : ''}">${l}</span>`).join('');
   const hinweise = [];
   if (n) hinweise.push(`${n} Einträge dieses Kapitels sagen im Wortlaut selbst, wie breit sie belegt sind — nur diese sind gekennzeichnet. <strong>Ein Eintrag ohne Kennzeichnung ist keine Einzelmeinung</strong>, seine Belegdichte ist lediglich nicht dokumentiert.`);
-  if (nExtern) hinweise.push(`Als <strong>außerhalb TO</strong> markiert ist, was nicht aus Trans-Ocean-Gruppen stammt.`);
+  if (origLabels.some(l => !l.startsWith('teils')))
+    hinweise.push(`Als <strong>außerhalb TO</strong> markiert ist, was nicht aus Trans-Ocean-Gruppen stammt.`);
+  if (origLabels.some(l => l.startsWith('teils')))
+    hinweise.push(`<strong>Teils außerhalb TO</strong> heißt: TO-Gruppen und externe Gruppen sind beide eingeflossen, die Zuordnung je Eintrag ist nicht dokumentiert.`);
   return `<div class="prov-legend">
     ${belegdichte}${extern}
     <span class="pl-hint">${hinweise.join(' ')}</span>
@@ -1596,8 +1605,8 @@ function showPage(key) {
     const md = $('#md-content');
     md.innerHTML = safetyNoteHtml(key) + mdToHtml(content);
     const n = annotateProvenance(md);
-    const nExtern = annotateOrigin(md, key);
-    const html = provLegendHtml(n, nExtern);
+    const origLabels = annotateOrigin(md, key);
+    const html = provLegendHtml(n, origLabels);
     if (html) {
       const h1 = md.querySelector('h1');
       if (h1) h1.insertAdjacentHTML('afterend', html);
