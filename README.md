@@ -4,7 +4,7 @@ Gesammeltes Segler-Wissen aus den Trans-Ocean WhatsApp-Gruppen — aufbereitet a
 
 🌐 **Online:** https://jjreichel.github.io/to-wissensdatenbank/
 
-**Version 2.1** · 2.712 Einträge · 15 Themen · ausgewertet August 2025 bis August 2026
+**Version 2.2** · 2.712 Einträge · 15 Themen · ausgewertet August 2025 bis August 2026
 
 ---
 
@@ -58,11 +58,12 @@ Die **Hauptversion** steht für den Stand der Sammlung, die **Nebenversion** fü
 
 | Version | Stand | Inhalt |
 |---------|-------|--------|
-| **2.1** | August 2026 | Phase 1 · Vertrauen sichern — Bestandsprüfung, Grundsätze, Fundstellen-Verfahren |
+| **2.2** | August 2026 | Phase 2 · Transparenz herstellen — Methodik-Seite, gemessene Quellgruppen-Matrix, Belegdichte und Herkunft je Eintrag, Sicherheitshinweise |
+| 2.1 | August 2026 | Phase 1 · Vertrauen sichern — Bestandsprüfung, Grundsätze, Fundstellen-Verfahren |
 | 2.0 | August 2026 | Auswertung bis August 2026, Bestand auf 2.712 Einträge erweitert |
 | 1.0 | April 2026 | Erste Fassung mit 1.629 Einträgen |
 
-Geplant sind 2.2 bis 2.4 für die Phasen 2 bis 4 der Roadmap. Der vollständige Verlauf steht im [Changelog](CHANGELOG.md) und ist in der Oberfläche über die Versionsanzeige abrufbar.
+Geplant sind 2.3 und 2.4 für die Phasen 3 und 4 der Roadmap. Der vollständige Verlauf steht im [Changelog](CHANGELOG.md) und ist in der Oberfläche über die Versionsanzeige abrufbar.
 
 ## Quelle
 

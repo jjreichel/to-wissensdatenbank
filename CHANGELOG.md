@@ -4,6 +4,10 @@ Dokumentiert Löschungen, Anonymisierungen und Änderungen an den [Grundsätzen]
 
 ---
 
+## Version 2.2 — 11. August 2026
+
+Phase 2 der Roadmap ist im Wesentlichen umgesetzt: Methodik-Seite, gemessene Zuordnung der Kapitel zu Quellgruppen, Kennzeichnung von Belegdichte und Herkunft, Hinweise bei sicherheitsrelevanten Themen. **Offen bleibt** die Herkunftsgruppe und der Zeitraum je einzelnem Eintrag — beides ist im veröffentlichten Bestand nicht hinterlegt.
+
 ## 11. August 2026 — Erhebungsweg offengelegt
 
 Die Methodik-Seite nennt jetzt den Erhebungsweg: die Verdichtung der Gruppenbeiträge zu Einträgen erfolgte **mit KI-Unterstützung**, Auswahl und Verantwortung liegen beim Betreiber. Offengelegt sind auch die Folgen — kein Nachweis je Eintrag, Verzerrungsrisiko durch Zusammenfassung, keine systematische fachliche Prüfung.
