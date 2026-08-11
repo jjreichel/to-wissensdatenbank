@@ -31,7 +31,7 @@ Die Zuordnung von Kapiteln zu Quellgruppen ist **thematisch, nicht eins zu eins*
 
 ### Quellen außerhalb Trans-Ocean
 
-Einzelne Themen stammen nicht oder nicht ausschließlich aus TO-Gruppen, sondern aus anderen Seglergruppen — insbesondere zur **Rotmeer-Passage**, zur **Barfußroute** und zu **Malta**. Diese Inhalte sind in der Weboberfläche gekennzeichnet, am betreffenden Abschnitt oder Eintrag:
+Einzelne Themen stammen nicht oder nicht ausschließlich aus TO-Gruppen, sondern aus anderen Seglergruppen — insbesondere zur **Atlantik-Rücküberquerung von West nach Ost** samt Azoren und Wetterrouting, zur **Rotmeer-Passage**, zur **Barfußroute** und zu **Malta**. Diese Inhalte sind in der Weboberfläche gekennzeichnet, am betreffenden Abschnitt oder Eintrag:
 
 * **außerhalb TO** — die Angaben stammen aus Gruppen außerhalb Trans-Ocean.
 * **teils außerhalb TO** — TO-Gruppen und externe Gruppen sind beide eingeflossen; welcher Eintrag aus welcher Quelle stammt, ist nicht dokumentiert. Das betrifft den Abschnitt zur Rotmeer-Passage.

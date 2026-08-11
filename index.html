@@ -338,6 +338,7 @@
   }
   .orig-extern.orig-mixed { background: none; color: var(--ink-mute); border: 1px solid var(--ink-mute); }
   h2 .orig-extern, h3 .orig-extern { vertical-align: 5px; }
+  .orig-note.orig-note-kapitel { margin-top: -8px; }
   .orig-note {
     margin: -14px 0 22px;
     font-family: var(--mono); font-size: 10px;
@@ -1246,13 +1247,31 @@ const NON_TO = {
     }],
   },
   sicherheit: {
-    entries: [{ re: /Barfußroute/ }],
+    entries: [{ re: /Barfußroute/, mixed: true }],
+  },
+  atlantik: {
+    headings: [
+      { text: 'Rücküberquerung (Karibik → Europa)',
+        note: 'Quelle außerhalb Trans-Ocean: eine Gruppe zur Atlantik-Rücküberquerung von West nach Ost. Sie ist für dieses Thema die dominierende Quelle.' },
+      { text: 'Azoren',
+        note: 'Quelle außerhalb Trans-Ocean: dieselbe Gruppe zur Rücküberquerung West–Ost.' },
+    ],
+  },
+  lossegler: {
+    headings: [
+      { text: 'Azoren',
+        note: 'Quelle außerhalb Trans-Ocean: Gruppe zur Atlantik-Rücküberquerung von West nach Ost.' },
+    ],
+  },
+  wetter: {
+    chapter: { mixed: true,
+      note: 'Herkunft gemischt: die TO-Wettergruppe und eine Gruppe außerhalb Trans-Ocean zur Atlantik-Rücküberquerung haben in etwa gleichem Umfang beigetragen. Welcher Eintrag aus welcher Quelle stammt, ist nicht dokumentiert.' },
   },
 };
 
 function annotateOrigin(container, key) {
   const cfg = NON_TO[key];
-  if (!cfg) return [];
+  if (!cfg) return { labels: [], kapitelNotiz: '' };
   const used = new Set();
   const badge = (mixed) => {
     const s = document.createElement('span');
@@ -1261,6 +1280,16 @@ function annotateOrigin(container, key) {
     used.add(s.textContent);
     return s;
   };
+  let kapitelNotiz = '';
+  if (cfg.chapter) {
+    const h1 = container.querySelector('h1');
+    if (h1) {
+      h1.appendChild(badge(cfg.chapter.mixed));
+      // Die Notiz wird erst hinter der Legende eingesetzt, sonst konkurrieren beide
+      // um den Platz direkt unter der Überschrift.
+      if (cfg.chapter.note) kapitelNotiz = `<p class="orig-note orig-note-kapitel">${cfg.chapter.note}</p>`;
+    }
+  }
   (cfg.headings || []).forEach(h => {
     container.querySelectorAll('h2, h3').forEach(el => {
       if (el.textContent.trim() !== h.text) return;
@@ -1274,7 +1303,7 @@ function annotateOrigin(container, key) {
       if (e.re.test(li.textContent)) li.appendChild(badge(e.mixed));
     });
   });
-  return [...used];
+  return { labels: [...used], kapitelNotiz };
 }
 
 function annotateProvenance(container) {
@@ -1620,8 +1649,8 @@ function showPage(key) {
     md.innerHTML = safetyNoteHtml(key) + mdToHtml(content);
     const erklaerseite = key === 'methodik';
     const n = erklaerseite ? 0 : annotateProvenance(md);
-    const origLabels = erklaerseite ? [] : annotateOrigin(md, key);
-    const html = provLegendHtml(n, origLabels);
+    const herkunft = erklaerseite ? { labels: [], kapitelNotiz: '' } : annotateOrigin(md, key);
+    const html = provLegendHtml(n, herkunft.labels) + herkunft.kapitelNotiz;
     if (html) {
       const h1 = md.querySelector('h1');
       if (h1) h1.insertAdjacentHTML('afterend', html);
