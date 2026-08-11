@@ -191,6 +191,7 @@
   }
   #sidebar-footer .sf-row {
     display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 2px 14px;
   }
 
   /* ─────────────── VERSION ─────────────── */
@@ -249,7 +250,7 @@
   }
   .vp-list { list-style: none; margin-top: 20px; }
   .vp-item {
-    display: grid; grid-template-columns: 62px 1fr; gap: 18px;
+    display: grid; grid-template-columns: 96px 1fr; gap: 18px;
     padding: 14px 0;
     border-top: 1px solid var(--rule-soft);
   }
@@ -275,6 +276,33 @@
     color: var(--ink-faint); line-height: 1.7;
   }
   .vp-next b { color: var(--ink-mute); font-weight: 500; }
+
+  /* ─────────────── SICHERHEITSHINWEIS ─────────────── */
+  .safety-note {
+    display: flex; gap: 14px; align-items: flex-start;
+    margin: 0 0 30px;
+    padding: 16px 18px;
+    background: linear-gradient(to right, rgba(168, 65, 42, .07), rgba(168, 65, 42, .02));
+    border: 1px solid rgba(168, 65, 42, .22);
+    border-left: 3px solid var(--signal);
+    border-radius: var(--radius);
+  }
+  .safety-note .sn-icon {
+    width: 17px; height: 17px; flex: none;
+    margin-top: 1px;
+    color: var(--signal);
+  }
+  .safety-note .sn-title {
+    font-family: var(--mono);
+    font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--signal);
+    margin-bottom: 5px;
+  }
+  .safety-note .sn-body {
+    font-size: 13px; line-height: 1.6; color: var(--ink-2);
+    max-width: 68ch;
+  }
+  .safety-note .sn-body strong { color: var(--ink); font-weight: 600; }
 
   /* ─────────────── MAIN ─────────────── */
   #main {
@@ -912,6 +940,11 @@
       <path d="M4 4 H10 a3 3 0 0 1 3 3 V20 a2 2 0 0 0 -2-2 H4 Z"/>
       <path d="M20 4 H14 a3 3 0 0 0 -3 3 V20 a2 2 0 0 1 2-2 H20 Z"/>
     </symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3.5 L21.5 20 H2.5 Z"/>
+      <path d="M12 9.5 V14"/>
+      <path d="M12 17.2 V17.3"/>
+    </symbol>
   </defs>
 </svg>
 
@@ -1103,6 +1136,34 @@ const VERSION_NEXT = [
   { v: '2.4', title: 'Phase 4 · Paradigma und Governance' },
 ];
 const VERSION = VERSIONS[0];
+
+// ───── Hinweise bei sicherheitsrelevanten Themen (Roadmap Phase 2) ─────
+const SAFETY_NOTES = {
+  sicherheit: { title: 'Sicherheitsrelevantes Thema', body:
+    'Die Einträge sind Erfahrungsberichte, <strong>keine geprüften Sicherheitsempfehlungen</strong>. Rettungsmittel und Notsignale hängen von Person, Ausrüstung und Revier ab — Auftrieb und Handhabung selbst im Wasser testen, Wartungsintervalle der Hersteller einhalten und den Vorgaben von Flaggenstaat und Klassifikation folgen. Bei Widersprüchen gilt die Herstellerangabe, nicht der Beitrag hier.' },
+  versicherungen: { title: 'Versicherung und Recht', body:
+    'Erfahrungen mit Anbietern und Schadensfällen sind <strong>Einzelfälle und nicht übertragbar</strong>. Verbindlich ist ausschließlich der Wortlaut deiner Police samt Bedingungswerk — Deckung, Fahrtgebiete, Selbstbehalte und Obliegenheiten unterscheiden sich erheblich und ändern sich mit jeder Tarifgeneration. Vor Abschluss oder Erweiterung schriftlich beim Versicherer bestätigen lassen. Dies ist keine Rechts- oder Versicherungsberatung.' },
+  diverses: { title: 'Orca-Interaktionen', body:
+    'Was hier zu Orcas steht, ist <strong>Erfahrungswissen ohne belegte Wirksamkeit</strong> — für keine der diskutierten Abwehrmethoden existiert eine belastbare Vergleichsstudie, und einige sind je nach Land verboten oder verstoßen gegen den Artenschutz. Maßgeblich sind die tagesaktuellen Lageinformationen und die offiziellen Verhaltensempfehlungen der zuständigen Behörden. Im Ereignisfall: Motor und Autopilot aus, Hände weg vom Ruder, Position melden.' },
+  mittelmeer: { title: 'Bürokratie ändert sich schnell', body:
+    'Gebühren, Einklarierungswege, Aufenthalts- und Steuerregeln sind <strong>tagesaktuell zu prüfen</strong>. Viele Angaben hier stammen aus einer bestimmten Saison und können bereits überholt sein. Vor der Reise die amtlichen Quellen des jeweiligen Landes heranziehen — bei Verstößen haftet die Crew, nicht die Sammlung.' },
+  karibik: { title: 'Formalitäten ändern sich schnell', body:
+    'Einklarierung, Gebühren, Visa- und Aufenthaltsregeln wechseln <strong>oft von Saison zu Saison</strong>. Die Einträge geben den Stand zum Zeitpunkt der Erfahrung wieder. Vor Anlauf die amtlichen Vorgaben des Landes prüfen, insbesondere bei Voranmeldung, Haustieren, Waffen und Medikamenten.' },
+  lossegler: { title: 'Recht und Aufenthalt', body:
+    'Angaben zu Wohnsitz, Steuern, Sozialversicherung, Zulassung und Aufenthaltsdauer sind <strong>Erfahrungsberichte, keine Auskunft</strong>. Die Rechtslage hängt von Staatsangehörigkeit, Meldestatus und Einzelfall ab und ändert sich. Für verbindliche Auskünfte die zuständige Behörde oder fachliche Beratung heranziehen.' },
+};
+
+function safetyNoteHtml(key) {
+  const n = SAFETY_NOTES[key];
+  if (!n) return '';
+  return `<aside class="safety-note" role="note">
+    <svg class="sn-icon" aria-hidden="true"><use href="#i-alert"/></svg>
+    <div>
+      <div class="sn-title">${n.title}</div>
+      <div class="sn-body">${n.body}</div>
+    </div>
+  </aside>`;
+}
 
 (() => {
   document.getElementById('version-chip-num').textContent   = 'v' + VERSION.v;
@@ -1392,7 +1453,7 @@ function showPage(key) {
     $('#page-view').classList.add('hidden');
   } else {
     const content = PAGES[key] || '# Nicht gefunden';
-    $('#md-content').innerHTML = mdToHtml(content);
+    $('#md-content').innerHTML = safetyNoteHtml(key) + mdToHtml(content);
   }
   setActiveNav(key);
   $('#content-area').scrollTop = 0;
