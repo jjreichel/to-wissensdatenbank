@@ -187,8 +187,94 @@
     font-size: 10px;
     letter-spacing: 0.1em;
     color: var(--ink-faint);
+    display: flex; flex-direction: column; gap: 9px;
+  }
+  #sidebar-footer .sf-row {
     display: flex; justify-content: space-between; align-items: center;
   }
+
+  /* ─────────────── VERSION ─────────────── */
+  .version-chip {
+    display: flex; align-items: baseline; gap: 7px;
+    width: 100%;
+    font: inherit; letter-spacing: 0.1em;
+    background: none; border: 0; padding: 0;
+    color: var(--brass); cursor: pointer; text-align: left;
+    transition: color .12s ease;
+  }
+  .version-chip .vc-phase {
+    color: var(--ink-faint);
+    letter-spacing: 0.06em;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .version-chip:hover { color: var(--navy); }
+  .version-chip:hover .vc-phase { color: var(--ink-mute); }
+  .version-chip:focus-visible { outline: 1px solid var(--brass); outline-offset: 3px; }
+
+  .ov-stat.is-version { cursor: pointer; }
+  .ov-stat.is-version .val { transition: color .12s ease; }
+  .ov-stat.is-version:hover .val { color: var(--brass); }
+
+  #version-overlay {
+    position: fixed; inset: 0; z-index: 60;
+    display: none; align-items: center; justify-content: center;
+    padding: 24px;
+    background: rgba(15, 36, 72, .34);
+  }
+  #version-overlay.open { display: flex; }
+  .version-panel {
+    width: min(580px, 100%);
+    max-height: min(80vh, 700px);
+    overflow-y: auto;
+    background: var(--card);
+    border: 1px solid var(--card-edge);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: 26px 30px 24px;
+  }
+  .vp-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 18px; }
+  .vp-head h2 {
+    font-family: var(--serif); font-size: 22px; font-weight: 500;
+    color: var(--ink); line-height: 1.2;
+  }
+  .vp-close {
+    background: none; border: 0; cursor: pointer;
+    font-size: 15px; line-height: 1; color: var(--ink-faint);
+    padding: 2px 4px; border-radius: var(--radius);
+  }
+  .vp-close:hover { color: var(--signal); }
+  .vp-lead {
+    margin-top: 8px; font-size: 12.5px; line-height: 1.6;
+    color: var(--ink-mute); max-width: 58ch;
+  }
+  .vp-list { list-style: none; margin-top: 20px; }
+  .vp-item {
+    display: grid; grid-template-columns: 62px 1fr; gap: 18px;
+    padding: 14px 0;
+    border-top: 1px solid var(--rule-soft);
+  }
+  .vp-ver { font-family: var(--mono); font-size: 13px; color: var(--ink-mute); }
+  .vp-item.current .vp-ver { color: var(--brass); font-weight: 600; }
+  .vp-date {
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-faint); margin-top: 5px;
+  }
+  .vp-title { font-size: 13.5px; font-weight: 500; color: var(--ink); }
+  .vp-title .vp-now {
+    font-family: var(--mono); font-size: 8.5px; font-weight: 400;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--brass); border: 1px solid var(--brass-soft);
+    border-radius: var(--radius); padding: 1px 5px; margin-left: 8px;
+    vertical-align: 1px;
+  }
+  .vp-desc { margin-top: 4px; font-size: 12.5px; line-height: 1.55; color: var(--ink-mute); }
+  .vp-next {
+    margin-top: 18px; padding-top: 14px;
+    border-top: 1px solid var(--rule-soft);
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em;
+    color: var(--ink-faint); line-height: 1.7;
+  }
+  .vp-next b { color: var(--ink-mute); font-weight: 500; }
 
   /* ─────────────── MAIN ─────────────── */
   #main {
@@ -888,8 +974,14 @@
   </div>
 
   <div id="sidebar-footer">
-    <span>© J.J.Reichel</span>
-    <span>2.712 Einträge</span>
+    <button class="version-chip" id="version-chip" title="Versionsverlauf anzeigen">
+      <span id="version-chip-num">v—</span>
+      <span class="vc-phase" id="version-chip-phase"></span>
+    </button>
+    <div class="sf-row">
+      <span>© J.J.Reichel</span>
+      <span>2.712 Einträge</span>
+    </div>
   </div>
 </aside>
 
@@ -924,6 +1016,7 @@
             <div class="ov-stat"><span class="val">2 712</span><span class="lbl">Einträge</span></div>
             <div class="ov-stat"><span class="val">15</span><span class="lbl">Themen</span></div>
             <div class="ov-stat"><span class="val">Aug ‘25 – Aug ‘26</span><span class="lbl">Zeitraum</span></div>
+            <div class="ov-stat is-version" id="version-stat" title="Versionsverlauf anzeigen"><span class="val" id="version-stat-num">—</span><span class="lbl">Version</span></div>
           </div>
         </header>
 
@@ -976,8 +1069,73 @@
   </div>
 </main>
 
+<!-- ─────────────── VERSIONSVERLAUF ─────────────── -->
+<div id="version-overlay" role="dialog" aria-modal="true" aria-labelledby="vp-title">
+  <div class="version-panel">
+    <div class="vp-head">
+      <h2 id="vp-title">Versionsverlauf</h2>
+      <button class="vp-close" id="version-close" title="Schließen (Esc)">✕</button>
+    </div>
+    <p class="vp-lead">
+      Die Hauptversion steht für den Stand der Sammlung, die Nebenversion für die umgesetzten
+      Schritte der Roadmap.
+    </p>
+    <ul class="vp-list" id="version-list"></ul>
+    <div class="vp-next" id="version-next"></div>
+  </div>
+</div>
+
 <script src="data.js"></script>
 <script>
+// ───── Versionierung ─────
+// Einzige Pflegestelle: neue Version oben ergänzen, Nebenversion je Roadmap-Phase hochzählen.
+const VERSIONS = [
+  { v: '2.1', date: '11. August 2026', title: 'Phase 1 · Vertrauen sichern',
+    desc: 'Gesamtbestand auf personenbezogene Angaben und wörtliche Übernahmen geprüft. Grundsätze und dauerhaft ausgeschlossene Quellgruppen verbindlich festgeschrieben, Fundstellen-Verfahren aktiv.' },
+  { v: '2.0', date: 'August 2026', title: 'Auswertung bis August 2026',
+    desc: 'Gruppen bis August 2026 ausgewertet, Bestand auf 2.712 Einträge in 15 Themenbereichen erweitert. Medizinteil aus der Veröffentlichung genommen.' },
+  { v: '1.0', date: 'April 2026', title: 'Erste Fassung',
+    desc: 'Aufbau als durchsuchbare Wissensdatenbank mit 1.629 Einträgen.' },
+];
+const VERSION_NEXT = [
+  { v: '2.2', title: 'Phase 2 · Transparenz herstellen' },
+  { v: '2.3', title: 'Phase 3 · Aktualität lösen' },
+  { v: '2.4', title: 'Phase 4 · Paradigma und Governance' },
+];
+const VERSION = VERSIONS[0];
+
+(() => {
+  document.getElementById('version-chip-num').textContent   = 'v' + VERSION.v;
+  document.getElementById('version-chip-phase').textContent = VERSION.title.replace(/^Phase \d+ · /, '');
+  document.getElementById('version-stat-num').textContent   = VERSION.v;
+
+  document.getElementById('version-list').innerHTML = VERSIONS.map((e, i) => `
+    <li class="vp-item${i === 0 ? ' current' : ''}">
+      <div>
+        <div class="vp-ver">${e.v}</div>
+        <div class="vp-date">${e.date}</div>
+      </div>
+      <div>
+        <div class="vp-title">${e.title}${i === 0 ? '<span class="vp-now">aktuell</span>' : ''}</div>
+        <div class="vp-desc">${e.desc}</div>
+      </div>
+    </li>`).join('');
+
+  document.getElementById('version-next').innerHTML =
+    'Geplant:<br>' + VERSION_NEXT.map(e => `<b>${e.v}</b> — ${e.title}`).join('<br>');
+
+  const overlay = document.getElementById('version-overlay');
+  const open  = () => overlay.classList.add('open');
+  const close = () => overlay.classList.remove('open');
+  document.getElementById('version-chip').addEventListener('click', open);
+  document.getElementById('version-stat').addEventListener('click', open);
+  document.getElementById('version-close').addEventListener('click', close);
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.classList.contains('open')) close();
+  });
+})();
+
 // ───── topic meta (icon, short description, count, group) ─────
 const TOPIC_META = {
   elektrik:               { icon: '#i-elektrik',  desc: 'Batterien, Solar, Victron, Router, AIS/VHF, Blitzschutz.',           count: 385, group: 'technik' },
