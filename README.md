@@ -1,35 +1,68 @@
-# TransOcean WhatsApp Wissensdatenbank
+# Trans-Ocean WhatsApp Wissensdatenbank
 
 Gesammeltes Segler-Wissen aus den Trans-Ocean WhatsApp-Gruppen — aufbereitet als durchsuchbare Wissensdatenbank.
 
 🌐 **Online:** https://jjreichel.github.io/to-wissensdatenbank/
 
+**Version 2.1** · 2.712 Einträge · 15 Themen · ausgewertet August 2025 bis August 2026
+
 ---
 
 ## Inhalt
 
-| Thema | Inhalt |
-|-------|--------|
-| Elektrik | Batterien, Solar, Windgeneratoren, Victron, AIS/VHF, Blitzschutz |
-| Motorentechnik | Dieselmotoren, Kraftstoff, Filter, Turbo, Wellenanlage |
-| Mechanik | Werften, Antifouling, Dichtungen, Dinghy, Rigg, Anker |
-| Satellit | Starlink, Iridium, Garmin inReach, SIM-Karten, Router |
-| Wassersysteme | Watermaker, Frischwasser, Sanitär |
-| Versicherungen | Yacht- und Krankenversicherung für Langfahrt |
-| Mittelmeer | Winterlager, Bürokratie, Wetter |
-| Karibik | Einklarierung, Inseln, Häfen, Kommunikation |
-| Atlantik | Überquerungsrouten, Rallyes, Sicherheit |
-| Sicherheit | Rettungswesten, MOB, Anker, EPIRB, Brandschutz |
-| Funk | VHF, SSB/HF, Amateurfunk, Navtex, Meshtastic |
-| Navigation | Seekarten, Chartplotter, Tablets, AIS, Wetter-Apps |
-| Lossegler | Routen, Häfen, Bürokratie, Azoren, Biskaya |
-| Diverses | Orcas, Angeln, 3D-Druck, Wetter, Rotes Meer |
+**Technik an Bord** — 1.415 Einträge
+
+| Thema | Inhalt | Einträge |
+|-------|--------|---------:|
+| Elektrik | Batterien, LiFePO4, Solar, Windgeneratoren, Victron, AIS/VHF, Blitzschutz | 385 |
+| Motorentechnik | Dieselmotoren, Kraftstoff, Filter, Turbo, Propeller, Wellenanlage | 329 |
+| Mechanik | Werften, Antifouling, Dichtungen, Dinghy, Rigg, Anker | 277 |
+| Satellit | Starlink, Iridium, Garmin inReach, SIM-Karten, Router | 195 |
+| Wassersysteme | Watermaker, Tanks, Boiler, Pumpen, Sanitär | 165 |
+| Funk | VHF, SSB/HF, DSC, MMSI, Antennen, Funkzeugnisse | 64 |
+
+**Reviere** — 645 Einträge
+
+| Thema | Inhalt | Einträge |
+|-------|--------|---------:|
+| Mittelmeer | Häfen, Winterlager, Einklarieren, Bürokratie, lokale Adressen | 292 |
+| Karibik | Einklarierung, Inseln, Werften, Hurricane-Holes | 133 |
+| Atlantik | Überquerungsrouten, ARC, Kanaren, Kapverden | 86 |
+| Navigation | Seekarten, Plotter, OpenCPN, Navionics, Tablets | 65 |
+| Wetter | GRIB, PredictWind, Windy, Routing, Hurricane-Saison | 69 |
+
+**Sicherheit** — 322 Einträge
+
+| Thema | Inhalt | Einträge |
+|-------|--------|---------:|
+| Sicherheit | Rettungswesten, MOB, EPIRB, Brandschutz, Orca, Piraterie | 148 |
+| Versicherungen | Yacht-, Kasko- und Krankenversicherung für Langfahrt | 174 |
+
+**Weiteres** — 330 Einträge
+
+| Thema | Inhalt | Einträge |
+|-------|--------|---------:|
+| Lossegler | Community, Treffen, Yachtkauf, Langfahrt-Alltag, Azoren, Biskaya | 106 |
+| Diverses | Orcas, Angeln, Tauchen, 3D-Druck, Rotes Meer, Bordelektronik | 224 |
 
 ## Features
 
-- Volltext-Suche über alle Themen
-- Offline nutzbar (einzelne HTML-Datei, keine externe Abhängigkeit)
-- Dunkles Theme
+- Volltext-Suche über alle Themen (`⌘ K`)
+- Offline nutzbar — `index.html` und `data.js`, keine externen Abhängigkeiten
+- Helles Layout im Stil eines Logbuchs
+- Versionsanzeige mit Verlauf, direkt in der Oberfläche
+
+## Versionierung
+
+Die **Hauptversion** steht für den Stand der Sammlung, die **Nebenversion** für die umgesetzten Schritte der [Roadmap](ROADMAP.md).
+
+| Version | Stand | Inhalt |
+|---------|-------|--------|
+| **2.1** | August 2026 | Phase 1 · Vertrauen sichern — Bestandsprüfung, Grundsätze, Fundstellen-Verfahren |
+| 2.0 | August 2026 | Auswertung bis August 2026, Bestand auf 2.712 Einträge erweitert |
+| 1.0 | April 2026 | Erste Fassung mit 1.629 Einträgen |
+
+Geplant sind 2.2 bis 2.4 für die Phasen 2 bis 4 der Roadmap. Der vollständige Verlauf steht im [Changelog](CHANGELOG.md) und ist in der Oberfläche über die Versionsanzeige abrufbar.
 
 ## Quelle
 
@@ -59,7 +92,7 @@ Dies ist ein privates Projekt und keine Veröffentlichung des Trans-Ocean e. V.
 
 - [Grundsätze](GRUNDSAETZE.md) — Quellgruppen, Ausschlüsse, Fundstellen-Verfahren im Detail
 - [Roadmap](ROADMAP.md) — geplante Weiterentwicklung
-- [Changelog](CHANGELOG.md) — Löschungen und Änderungen an den Grundsätzen
+- [Changelog](CHANGELOG.md) — Versionen, Löschungen und Änderungen an den Grundsätzen
 
 ---
 
