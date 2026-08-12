@@ -370,6 +370,33 @@
     border-bottom: 1px dotted var(--rule);
   }
   .herk.herk-hoch { color: var(--ink-mute); }
+  .herk.herk-alt { color: var(--signal); border-bottom-color: var(--signal); }
+
+  /* Aktualität — Verfallslogik für zeitkritische Angaben */
+  .zeit {
+    display: inline-block;
+    margin-left: 7px;
+    font-family: var(--mono);
+    font-size: 8.5px; letter-spacing: 0.11em; text-transform: uppercase;
+    padding: 1px 6px 2px;
+    border-radius: 8px;
+    vertical-align: 1.5px;
+    white-space: nowrap;
+    cursor: help;
+    border: 1px solid currentColor;
+  }
+  .zeit-krit  { color: var(--brass); }
+  .zeit-unbek { color: var(--ink-faint); border-style: dashed; }
+  .zeit-hist  { color: var(--paper); background: var(--signal); border-color: var(--signal); }
+
+  /* Korrektur-Kanal */
+  .korrektur {
+    flex: 1 1 100%;
+    margin-top: 2px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em;
+  }
+  .korrektur a { color: var(--brass); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  .korrektur a:hover { color: var(--navy); border-bottom-color: var(--navy); }
 
   /* ─────────────── MAIN ─────────────── */
   #main {
@@ -1200,6 +1227,8 @@
 // ───── Versionierung ─────
 // Einzige Pflegestelle: neue Version oben ergänzen, Nebenversion je Roadmap-Phase hochzählen.
 const VERSIONS = [
+  { v: '2.3', date: '12. August 2026', title: 'Phase 3 · Aktualität lösen',
+    desc: 'Zeitkritische Einträge gekennzeichnet — Preise, Gebühren, behördliche Angaben. Verfallslogik: solche Einträge werden automatisch als historisch markiert, sobald ihr Fundzeitraum zwölf Monate zurückliegt. Korrektur-Kanal je Kapitel über ein vorbereitetes Meldeformular.' },
   { v: '2.2', date: '12. August 2026', title: 'Phase 2 · Transparenz herstellen',
     desc: 'Methodik-Seite mit gemessener Zuordnung der Kapitel zu Quellgruppen und offengelegtem Erhebungsweg. Belegdichte je Eintrag gekennzeichnet, Herkunft außerhalb Trans-Ocean markiert, Warnhinweise bei sicherheitsrelevanten Themen. Für 834 Einträge sind Quellgruppe und Fundzeitraum aus dem Nachrichtenverlauf ermittelt.' },
   { v: '2.1', date: '11. August 2026', title: 'Phase 1 · Vertrauen sichern',
@@ -1210,7 +1239,6 @@ const VERSIONS = [
     desc: 'Aufbau als durchsuchbare Wissensdatenbank mit 1.629 Einträgen.' },
 ];
 const VERSION_NEXT = [
-  { v: '2.3', title: 'Phase 3 · Aktualität lösen' },
   { v: '2.4', title: 'Phase 4 · Paradigma und Governance' },
 ];
 const VERSION = VERSIONS[0];
@@ -1336,23 +1364,78 @@ function fnvHash(s) {
 
 const mmjj = iso => iso.slice(5, 7) + '/' + iso.slice(2, 4);
 
-function annotateHerkunft(container) {
-  if (typeof HERKUNFT === 'undefined') return 0;
-  let n = 0;
+// ───── Aktualität (Roadmap Phase 3) ─────
+// Zeitkritisch ist, was sich unabhängig von der Technik ändert: Geld, Behörden, Fristen.
+const ZEITKRITISCH = /(\d+[.,]?\d*\s*(€|EUR|USD|\$|GBP|CHF)|€\s*\d|USD\s*\d|Gebühr|Tarif|Preis|kostet|Kosten|pro Monat|pro Jahr|pro Tag|je Nacht|Liegegeld|Kurtaxe|TEPAI|Einklarier|Visum|Aufenthalt|Vorschrift|Steuer|Zoll|Prämie|Beitrag)/i;
+const VERFALL_MONATE = 12;
+
+// Läuft gegen den Kalender, nicht gegen ein festes Datum: die Markierung
+// erscheint von selbst, sobald ein Eintrag die Frist überschreitet.
+function monateSeit(jjjjmm) {
+  const jetzt = new Date();
+  const [j, m] = jjjjmm.split('-').map(Number);
+  return (jetzt.getFullYear() * 12 + jetzt.getMonth() + 1) - (j * 12 + m);
+}
+
+// Ein Durchlauf für Herkunft und Aktualität — die Prüfsumme braucht den
+// unveränderten Text, deshalb darf vorher nichts angehängt werden.
+function annotateEintrag(container) {
+  const z = { datiert: 0, zeitkritisch: 0, historisch: 0, alterUnbekannt: 0 };
   container.querySelectorAll('li').forEach(li => {
     if (li.querySelector('li')) return;
-    const h = HERKUNFT[fnvHash(li.textContent)];
-    if (!h) return;
-    const [gruppe, von, bis, konf, belege] = h;
-    const span = document.createElement('span');
-    span.className = 'herk' + (konf === 2 ? ' herk-hoch' : '');
-    span.textContent = von === bis ? mmjj(von) : mmjj(von) + '–' + mmjj(bis);
-    span.title = `Quelle: ${gruppe}\nFundzeitraum: ${von === bis ? von : von + ' bis ' + bis}`
-      + `\nBelege: ${belege}\nZuordnung durch Textabgleich, Konfidenz ${konf === 2 ? 'hoch' : 'mittel'}`;
-    li.appendChild(span);
-    n++;
+    const text = li.textContent;
+    const h = typeof HERKUNFT !== 'undefined' ? HERKUNFT[fnvHash(text)] : null;
+    const kritisch = ZEITKRITISCH.test(text);
+
+    if (h) {
+      const [gruppe, von, bis, konf, belege] = h;
+      const alter = monateSeit(bis);
+      const veraltet = kritisch && alter >= VERFALL_MONATE;
+      const span = document.createElement('span');
+      span.className = 'herk' + (konf === 2 ? ' herk-hoch' : '') + (veraltet ? ' herk-alt' : '');
+      span.textContent = von === bis ? mmjj(von) : mmjj(von) + '–' + mmjj(bis);
+      span.title = `Quelle: ${gruppe}\nFundzeitraum: ${von === bis ? von : von + ' bis ' + bis}`
+        + `\nAlter: ${alter} Monate\nBelege: ${belege}`
+        + `\nZuordnung durch Textabgleich, Konfidenz ${konf === 2 ? 'hoch' : 'mittel'}`;
+      li.appendChild(span);
+      z.datiert++;
+
+      if (veraltet) {
+        li.appendChild(zeitBadge('historisch',
+          `Zeitkritische Angabe, deren Fundzeitraum über ${VERFALL_MONATE} Monate zurückliegt. Vor Gebrauch an der Primärquelle prüfen.`, 'zeit-hist'));
+        z.historisch++;
+      } else if (kritisch) {
+        li.appendChild(zeitBadge('zeitkritisch',
+          'Enthält Preise, Gebühren oder behördliche Angaben. Diese ändern sich unabhängig von der Sammlung — vor Gebrauch prüfen.', 'zeit-krit'));
+        z.zeitkritisch++;
+      }
+    } else if (kritisch) {
+      li.appendChild(zeitBadge('zeitkritisch, Alter unbekannt',
+        'Enthält Preise, Gebühren oder behördliche Angaben, und der Eintrag liess sich keinem Zeitraum zuordnen. Alter unbekannt — vor Gebrauch prüfen.', 'zeit-unbek'));
+      z.alterUnbekannt++;
+    }
   });
-  return n;
+  return z;
+}
+
+// ───── Korrektur-Kanal (Roadmap Phase 3) ─────
+// Öffnet ein vorbefülltes Issue-Formular. Der Meldeweg braucht keinen Server,
+// deshalb bleibt die Sammlung eine statische Seite.
+const REPO_ISSUES = 'https://github.com/jjreichel/to-wissensdatenbank/issues/new';
+function korrekturLink(key) {
+  const kapitel = TOPIC_LABELS[key] || key;
+  return REPO_ISSUES + '?template=veralteter-eintrag.yml'
+    + '&labels=' + encodeURIComponent('Korrektur')
+    + '&title=' + encodeURIComponent(`[Korrektur] ${kapitel}: `)
+    + '&kapitel=' + encodeURIComponent(kapitel);
+}
+
+function zeitBadge(text, hinweis, cls) {
+  const s = document.createElement('span');
+  s.className = 'zeit ' + cls;
+  s.textContent = text;
+  s.title = hinweis;
+  return s;
 }
 
 function annotateProvenance(container) {
@@ -1371,24 +1454,37 @@ function annotateProvenance(container) {
   return n;
 }
 
-function provLegendHtml(n, origLabels, nHerk) {
-  if (!n && !origLabels.length && !nHerk) return '';
+function provLegendHtml(n, origLabels, zeit, key) {
+  const nHerk = zeit.datiert;
+  const nZeit = zeit.zeitkritisch + zeit.historisch + zeit.alterUnbekannt;
+  if (!n && !origLabels.length && !nHerk && !nZeit) return '';
   const belegdichte = n ? `<span class="prov prov-mehrfach">mehrfach berichtet</span>
     <span class="prov prov-einzel">Einzelmeinung</span>
     <span class="prov prov-umstritten">umstritten</span>` : '';
   const extern = origLabels.map(l =>
     `<span class="orig-extern${l.startsWith('teils') ? ' orig-mixed' : ''}">${l}</span>`).join('')
-    + (nHerk ? '<span class="herk herk-hoch">MM/JJ</span>' : '');
+    + (nHerk ? '<span class="herk herk-hoch">MM/JJ</span>' : '')
+    + (zeit.zeitkritisch || zeit.alterUnbekannt ? '<span class="zeit zeit-krit">zeitkritisch</span>' : '')
+    + (zeit.historisch ? '<span class="zeit zeit-hist">historisch</span>' : '');
   const hinweise = [];
   if (n) hinweise.push(`${n} Einträge dieses Kapitels sagen im Wortlaut selbst, wie breit sie belegt sind — nur diese sind gekennzeichnet. <strong>Ein Eintrag ohne Kennzeichnung ist keine Einzelmeinung</strong>, seine Belegdichte ist lediglich nicht dokumentiert.`);
   if (origLabels.some(l => !l.startsWith('teils')))
     hinweise.push(`Als <strong>außerhalb TO</strong> markiert ist, was nicht aus Trans-Ocean-Gruppen stammt.`);
   if (origLabels.some(l => l.startsWith('teils')))
     hinweise.push(`<strong>Teils außerhalb TO</strong> heißt: TO-Gruppen und externe Gruppen sind beide eingeflossen, die Zuordnung je Eintrag ist nicht dokumentiert.`);
-  if (nHerk) hinweise.push(`Die Monatsangabe hinter ${nHerk} Einträgen ist der <strong>Fundzeitraum</strong> der zugehörigen Beiträge — Mauszeiger darauf zeigt Quellgruppe und Konfidenz. Sie stammt aus einem Textabgleich und ist kein Beleg; Einträge ohne Angabe liessen sich nicht zuordnen.`);
+  if (nHerk) hinweise.push(`Die Monatsangabe hinter ${nHerk} Einträgen ist der <strong>Fundzeitraum</strong> der zugehörigen Beiträge — Mauszeiger darauf zeigt Quellgruppe, Alter und Konfidenz. Sie stammt aus einem Textabgleich und ist kein Beleg; Einträge ohne Angabe liessen sich nicht zuordnen.`);
+  if (nZeit) {
+    const teile = [];
+    if (zeit.zeitkritisch) teile.push(`${zeit.zeitkritisch} datiert`);
+    if (zeit.alterUnbekannt) teile.push(`${zeit.alterUnbekannt} ohne Datum`);
+    if (zeit.historisch) teile.push(`${zeit.historisch} über ${VERFALL_MONATE} Monate alt und deshalb <strong>historisch</strong>`);
+    hinweise.push(`Als <strong>zeitkritisch</strong> markiert sind ${nZeit} Einträge mit Preisen, Gebühren oder behördlichen Angaben (${teile.join(', ')}). Sie ändern sich unabhängig von dieser Sammlung.`);
+  }
+  const melden = key ? `<span class="korrektur">Veralteter oder fehlerhafter Eintrag? <a href="${korrekturLink(key)}" target="_blank" rel="noopener">Korrektur melden</a> — Wortlaut des Eintrags bitte mitschicken.</span>` : '';
   return `<div class="prov-legend">
     ${belegdichte}${extern}
     <span class="pl-hint">${hinweise.join(' ')}</span>
+    ${melden}
   </div>`;
 }
 
@@ -1699,10 +1795,11 @@ function showPage(key) {
     const md = $('#md-content');
     md.innerHTML = safetyNoteHtml(key) + mdToHtml(content);
     const erklaerseite = key === 'methodik';
-    const nHerk = erklaerseite ? 0 : annotateHerkunft(md);
+    const leer = { datiert: 0, zeitkritisch: 0, historisch: 0, alterUnbekannt: 0 };
+    const zeit = erklaerseite ? leer : annotateEintrag(md);
     const n = erklaerseite ? 0 : annotateProvenance(md);
     const herkunft = erklaerseite ? { labels: [], kapitelNotiz: '' } : annotateOrigin(md, key);
-    const html = provLegendHtml(n, herkunft.labels, nHerk) + herkunft.kapitelNotiz;
+    const html = provLegendHtml(n, herkunft.labels, zeit, key) + herkunft.kapitelNotiz;
     if (html) {
       const h1 = md.querySelector('h1');
       if (h1) h1.insertAdjacentHTML('afterend', html);

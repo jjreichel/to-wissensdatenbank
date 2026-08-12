@@ -1,0 +1,34 @@
+name: Fundstelle melden — Personenbezug
+description: Du erkennst dich selbst oder Dritte in einem Eintrag wieder. Der Eintrag wird binnen 24 Stunden entfernt.
+title: "[Fundstelle] "
+labels: ["Fundstelle"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Zusagen dieses Verfahrens:** Der Eintrag wird binnen 24 Stunden entfernt — ohne
+        Begründungspflicht und ohne vorherige Prüfung, ob die Zuordnung zutrifft. Die Löschung
+        wird im Changelog dokumentiert, ohne Angaben zur meldenden Person. Im Zweifel wird
+        gelöscht, nicht diskutiert.
+
+        Wenn du die Meldung nicht öffentlich machen möchtest, wende dich stattdessen direkt an
+        den Verantwortlichen — das ist ausdrücklich gleichwertig.
+  - type: input
+    id: kapitel
+    attributes:
+      label: Kapitel
+      placeholder: z. B. Sicherheit
+    validations:
+      required: true
+  - type: textarea
+    id: wortlaut
+    attributes:
+      label: Wortlaut der Fundstelle
+      description: Der Eintrag oder der Teil davon, um den es geht.
+    validations:
+      required: true
+  - type: textarea
+    id: anmerkung
+    attributes:
+      label: Anmerkung
+      description: Optional. Eine Begründung ist nicht erforderlich.

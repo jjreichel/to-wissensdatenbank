@@ -4,7 +4,7 @@ Gesammeltes Segler-Wissen aus den Trans-Ocean WhatsApp-Gruppen — aufbereitet a
 
 🌐 **Online:** https://jjreichel.github.io/to-wissensdatenbank/
 
-**Version 2.2** · 2.712 Einträge · 15 Themen · ausgewertet August 2025 bis August 2026
+**Version 2.3** · 2.712 Einträge · 15 Themen · ausgewertet August 2025 bis August 2026
 
 ---
 
@@ -58,12 +58,13 @@ Die **Hauptversion** steht für den Stand der Sammlung, die **Nebenversion** fü
 
 | Version | Stand | Inhalt |
 |---------|-------|--------|
-| **2.2** | August 2026 | Phase 2 · Transparenz herstellen — Methodik-Seite, gemessene Quellgruppen-Matrix, Belegdichte, Quellgruppe und Fundzeitraum für 834 Einträge, Sicherheitshinweise |
+| **2.3** | August 2026 | Phase 3 · Aktualität lösen — zeitkritische Einträge gekennzeichnet, Verfallslogik, Korrektur-Kanal |
+| 2.2 | August 2026 | Phase 2 · Transparenz herstellen — Methodik-Seite, gemessene Quellgruppen-Matrix, Belegdichte, Quellgruppe und Fundzeitraum für 834 Einträge, Sicherheitshinweise |
 | 2.1 | August 2026 | Phase 1 · Vertrauen sichern — Bestandsprüfung, Grundsätze, Fundstellen-Verfahren |
 | 2.0 | August 2026 | Auswertung bis August 2026, Bestand auf 2.712 Einträge erweitert |
 | 1.0 | April 2026 | Erste Fassung mit 1.629 Einträgen |
 
-Geplant sind 2.3 und 2.4 für die Phasen 3 und 4 der Roadmap. Der vollständige Verlauf steht im [Changelog](CHANGELOG.md) und ist in der Oberfläche über die Versionsanzeige abrufbar.
+Geplant ist 2.4 für Phase 4 der Roadmap. Der vollständige Verlauf steht im [Changelog](CHANGELOG.md) und ist in der Oberfläche über die Versionsanzeige abrufbar.
 
 ## Quelle
 
@@ -81,7 +82,13 @@ So geht es:
 2. **Löschung binnen 24 Stunden** — ohne Begründungspflicht und ohne vorherige Prüfung, ob die Zuordnung zutrifft. Im Zweifel wird gelöscht, nicht diskutiert.
 3. **Dokumentation** — die Löschung wird im [Changelog](CHANGELOG.md) festgehalten, ohne Angaben zur meldenden Person.
 
-Meldungen werden vertraulich behandelt. Ebenso willkommen sind Hinweise auf veraltete oder fachlich falsche Einträge.
+Meldungen werden vertraulich behandelt.
+
+## Korrektur-Kanal
+
+Für **veraltete oder fachlich falsche Einträge** gibt es einen eigenen Weg: In der Weboberfläche steht unter jedem Kapitel **Korrektur melden**, der Link öffnet ein vorbereitetes [Formular](https://github.com/jjreichel/to-wissensdatenbank/issues/new?template=veralteter-eintrag.yml) mit vorbelegtem Kapitel. Besonders hilfreich ist ein Stand — „Juli 2026 vor Ort geprüft" ist mehr wert als eine Zahl ohne Datum.
+
+Zeitkritische Einträge (Preise, Gebühren, Behörden) sind in der Oberfläche als solche markiert; 205 von ihnen haben kein zuordenbares Datum.
 
 ## Grenzen
 

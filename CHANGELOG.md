@@ -4,6 +4,18 @@ Dokumentiert Löschungen, Anonymisierungen und Änderungen an den [Grundsätzen]
 
 ---
 
+## Version 2.3 — 12. August 2026
+
+Phase 3 der Roadmap ist abgeschlossen.
+
+**Zeitkritische Einträge gekennzeichnet:** 336 Einträge mit Preisen, Gebühren, Tarifen oder behördlichen Angaben tragen jetzt eine Markierung — 131 davon datiert, **205 ohne zuordenbares Datum**. Die zweite Gruppe ist die kritischere: dort steht eine Zahl oder eine Vorschrift, ohne dass ihr Alter bekannt ist.
+
+**Verfallslogik:** Ein zeitkritischer Eintrag wird automatisch als *historisch* markiert, sobald sein Fundzeitraum zwölf Monate zurückliegt. Die Regel läuft gegen den Kalender, nicht gegen ein festes Datum. **Heute markiert sie keinen einzigen Eintrag** — der Bestand wird erst seit September 2025 erhoben, der älteste Fundzeitraum ist knapp zwölf Monate alt. Die ersten Markierungen erscheinen ab September 2026 von selbst.
+
+**Korrektur-Kanal:** Unter jedem Kapitel steht „Korrektur melden". Der Link öffnet ein vorbereitetes Issue-Formular mit vorbelegtem Kapitel, in dem überholte Preise, fachliche Fehler und verschwundene Anbieter gemeldet werden können. Getrennt davon bleibt das Fundstellen-Verfahren für Personenbezug, das ein eigenes Formular hat.
+
+Die Methodik-Seite legt die Grenzen offen: Einträge ohne Fundzeitraum können nie verfallen, und der Fundzeitraum ist kein Entstehungsdatum — eine Gebühr kann überholt sein, obwohl die Diskussion darüber jung ist.
+
 ## Version 2.2 — 12. August 2026
 
 Phase 2 der Roadmap ist abgeschlossen: Methodik-Seite, gemessene Zuordnung der Kapitel zu Quellgruppen, Kennzeichnung von Belegdichte und Herkunft, Hinweise bei sicherheitsrelevanten Themen sowie Quellgruppe und Fundzeitraum für 834 Einträge.

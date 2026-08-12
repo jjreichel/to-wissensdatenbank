@@ -1,0 +1,57 @@
+name: Korrektur — veralteter oder fehlerhafter Eintrag
+description: Einen Eintrag melden, der überholt, unvollständig oder fachlich falsch ist.
+title: "[Korrektur] "
+labels: ["Korrektur"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Danke fürs Mitlesen. Zeitkritische Angaben — Gebühren, Tarife, Bürokratie — veralten in dieser
+        Sammlung besonders schnell, und für zwei Drittel der Einträge ist kein Zeitraum hinterlegt.
+        Jede Korrektur hilft.
+
+        Geht es dagegen darum, dass du **dich selbst oder Dritte** in einem Eintrag wiedererkennst,
+        nimm bitte das Formular *Fundstelle melden* — solche Einträge werden binnen 24 Stunden entfernt.
+  - type: input
+    id: kapitel
+    attributes:
+      label: Kapitel
+      placeholder: z. B. Mittelmeer
+    validations:
+      required: true
+  - type: textarea
+    id: wortlaut
+    attributes:
+      label: Wortlaut des Eintrags
+      description: Bitte den Eintrag hereinkopieren, damit er eindeutig auffindbar ist.
+    validations:
+      required: true
+  - type: dropdown
+    id: art
+    attributes:
+      label: Worum geht es?
+      options:
+        - Angabe ist überholt (Preis, Gebühr, Vorschrift hat sich geändert)
+        - Angabe ist fachlich falsch
+        - Angabe ist unvollständig oder irreführend
+        - Anbieter oder Adresse existiert nicht mehr
+        - Sonstiges
+    validations:
+      required: true
+  - type: textarea
+    id: richtig
+    attributes:
+      label: Was gilt stattdessen?
+      description: Soweit bekannt. Ein Stand ("Juli 2026 vor Ort geprüft") ist hilfreicher als eine Zahl ohne Datum.
+  - type: input
+    id: quelle
+    attributes:
+      label: Quelle oder eigene Erfahrung
+      placeholder: z. B. Preisliste der Marina, eigener Aufenthalt im Juni 2026
+  - type: checkboxes
+    id: hinweise
+    attributes:
+      label: Bitte bestätigen
+      options:
+        - label: Meine Meldung enthält keine personenbezogenen Daten Dritter.
+          required: true

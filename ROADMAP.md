@@ -31,11 +31,11 @@ Seit dem 11. August 2026 verbindlich festgeschrieben in **[GRUNDSAETZE.md](GRUND
 * [x] Kennzeichnung je Eintrag: Belegdichte (102 Einträge), Herkunft ausserhalb TO, sowie **Quellgruppe und Fundzeitraum für 834 Einträge** aus einer Neuauswertung gegen die Originalchats. Für zwei Drittel der Einträge liess sich keine sichere Zuordnung ermitteln; Verfahren, Abdeckung und Grenzen stehen auf der Methodik-Seite
 * [x] Hinweise bei sicherheitsrelevanten Themen — Sicherheit, Versicherungen, Orca, Mittelmeer, Karibik, Lossegler
 
-## Phase 3 · Aktualität lösen *(1 bis 3 Monate)*
+## Phase 3 · Aktualität lösen *(abgeschlossen am 12. August 2026)*
 
-* [ ] Zeitstempel je Eintrag und sichtbare Versionierung
-* [ ] Verfallslogik für zeitkritische Kategorien (Tarife, Bürokratie, Preise): Einträge älter als 12 Monate werden als historisch markiert
-* [ ] Korrektur-Kanal für die Community zur Meldung veralteter oder fehlerhafter Einträge
+* [x] Zeitstempel je Eintrag und sichtbare Versionierung — Fundzeitraum bei 834 Einträgen, Versionsanzeige mit Verlauf in der Oberfläche. Für zwei Drittel der Einträge liess sich kein Zeitraum ermitteln
+* [x] Verfallslogik für zeitkritische Kategorien: 336 Einträge als zeitkritisch gekennzeichnet (131 datiert, 205 ohne Datum). Die Regel läuft gegen den Kalender und markiert automatisch als historisch, sobald der Fundzeitraum 12 Monate zurückliegt — **heute greift sie bei keinem Eintrag**, weil der Bestand erst seit September 2025 erhoben wird
+* [x] Korrektur-Kanal je Kapitel über ein vorbereitetes Meldeformular, getrennt vom Fundstellen-Verfahren für Personenbezug
 
 ## Phase 4 · Paradigma und Governance *(3 bis 6 Monate)*
 
