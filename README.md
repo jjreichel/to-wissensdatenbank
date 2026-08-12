@@ -58,7 +58,7 @@ Die **Hauptversion** steht für den Stand der Sammlung, die **Nebenversion** fü
 
 | Version | Stand | Inhalt |
 |---------|-------|--------|
-| **2.2** | August 2026 | Phase 2 · Transparenz herstellen — Methodik-Seite, gemessene Quellgruppen-Matrix, Belegdichte und Herkunft je Eintrag, Sicherheitshinweise |
+| **2.2** | August 2026 | Phase 2 · Transparenz herstellen — Methodik-Seite, gemessene Quellgruppen-Matrix, Belegdichte, Quellgruppe und Fundzeitraum für 834 Einträge, Sicherheitshinweise |
 | 2.1 | August 2026 | Phase 1 · Vertrauen sichern — Bestandsprüfung, Grundsätze, Fundstellen-Verfahren |
 | 2.0 | August 2026 | Auswertung bis August 2026, Bestand auf 2.712 Einträge erweitert |
 | 1.0 | April 2026 | Erste Fassung mit 1.629 Einträgen |

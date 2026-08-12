@@ -4,6 +4,18 @@ Dokumentiert Löschungen, Anonymisierungen und Änderungen an den [Grundsätzen]
 
 ---
 
+## 12. August 2026 — Herkunft und Fundzeitraum je Eintrag
+
+Neuauswertung des Gesamtbestands gegen die Originalchats. Jeder Eintrag wurde per Textabgleich gegen den Nachrichtenverlauf geprüft: seltene, trennscharfe Begriffe aus dem Eintrag gegen die Nachrichten, die möglichst viele davon teilen.
+
+**Ergebnis:** 2.687 Einträge geprüft, **834 (31 %) zugeordnet und veröffentlicht**. 630 Zuordnungen wurden verworfen, weil sie in der Gegenprobe nur 71 Prozent Plausibilität erreichten; die veröffentlichten liegen bei 95 Prozent (hohe Konfidenz) und 92 Prozent (mittlere). 1.223 Einträge liessen sich nicht zuordnen.
+
+Angezeigt wird der Fundzeitraum als Monatsangabe hinter dem Eintrag, Quellgruppe und Konfidenz im Mauszeiger-Hinweis. Die Methodik-Seite legt offen, was das Verfahren nicht hergibt: es ist ein Textabgleich und kein Beleg, der Fundzeitraum ist kein Entstehungsdatum, die Belegzahl liegt im Mittel bei zwei Nachrichten, und eine fehlende Angabe sagt nichts über die Qualität des Eintrags.
+
+Die Auswertung lief schreibgeschützt; ausgeschlossene Gruppen wurden nicht abgefragt, und es ist kein Nachrichtentext ins Repository gelangt — gespeichert sind je Eintrag nur Gruppenname, Monatsspanne, Konfidenz und Belegzahl.
+
+Damit ist Phase 2 der Roadmap abgeschlossen.
+
 ## Version 2.2 — 11. August 2026
 
 Phase 2 der Roadmap ist im Wesentlichen umgesetzt: Methodik-Seite, gemessene Zuordnung der Kapitel zu Quellgruppen, Kennzeichnung von Belegdichte und Herkunft, Hinweise bei sicherheitsrelevanten Themen. **Offen bleibt** die Herkunftsgruppe und der Zeitraum je einzelnem Eintrag — beides ist im veröffentlichten Bestand nicht hinterlegt.

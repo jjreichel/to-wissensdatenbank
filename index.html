@@ -358,6 +358,19 @@
   }
   .prov-legend .pl-hint { flex: 1 1 100%; line-height: 1.6; }
 
+  /* Herkunft und Fundzeitraum je Eintrag — bewusst zurückhaltend, weil es
+     auf sehr vielen Einträgen steht */
+  .herk {
+    margin-left: 8px;
+    font-family: var(--mono);
+    font-size: 9px; letter-spacing: 0.06em;
+    color: var(--ink-faint);
+    white-space: nowrap;
+    cursor: help;
+    border-bottom: 1px dotted var(--rule);
+  }
+  .herk.herk-hoch { color: var(--ink-mute); }
+
   /* ─────────────── MAIN ─────────────── */
   #main {
     flex: 1;
@@ -1188,7 +1201,7 @@
 // Einzige Pflegestelle: neue Version oben ergänzen, Nebenversion je Roadmap-Phase hochzählen.
 const VERSIONS = [
   { v: '2.2', date: '11. August 2026', title: 'Phase 2 · Transparenz herstellen',
-    desc: 'Methodik-Seite mit gemessener Zuordnung der Kapitel zu Quellgruppen und offengelegtem Erhebungsweg. Belegdichte je Eintrag gekennzeichnet, Herkunft außerhalb Trans-Ocean markiert, Warnhinweise bei sicherheitsrelevanten Themen. Offen bleibt die Herkunftsgruppe je Eintrag.' },
+    desc: 'Methodik-Seite mit gemessener Zuordnung der Kapitel zu Quellgruppen und offengelegtem Erhebungsweg. Belegdichte je Eintrag gekennzeichnet, Herkunft außerhalb Trans-Ocean markiert, Warnhinweise bei sicherheitsrelevanten Themen. Für 834 Einträge sind Quellgruppe und Fundzeitraum aus dem Nachrichtenverlauf ermittelt.' },
   { v: '2.1', date: '11. August 2026', title: 'Phase 1 · Vertrauen sichern',
     desc: 'Gesamtbestand auf personenbezogene Angaben und wörtliche Übernahmen geprüft. Grundsätze und dauerhaft ausgeschlossene Quellgruppen verbindlich festgeschrieben, Fundstellen-Verfahren aktiv.' },
   { v: '2.0', date: 'August 2026', title: 'Auswertung bis August 2026',
@@ -1307,6 +1320,41 @@ function annotateOrigin(container, key) {
   return { labels: [...used], kapitelNotiz };
 }
 
+// ───── Herkunft und Fundzeitraum je Eintrag (Roadmap Phase 2) ─────
+// Zuordnung stammt aus einem Textabgleich gegen den Nachrichtenverlauf, siehe
+// Methodik-Seite. Nur Einträge mit ausreichender Konfidenz sind erfasst.
+// Die Prüfsumme muss zeichengleich mit dem Erzeugungsskript bleiben.
+function fnvHash(s) {
+  let h = 0x811c9dc5;
+  const t = s.toLowerCase().replace(/[^a-z0-9äöüß]/g, '');
+  for (let i = 0; i < t.length; i++) {
+    h ^= t.charCodeAt(i);
+    h = (h + ((h << 1) + (h << 4) + (h << 7) + (h << 8) + (h << 24))) >>> 0;
+  }
+  return h.toString(36);
+}
+
+const mmjj = iso => iso.slice(5, 7) + '/' + iso.slice(2, 4);
+
+function annotateHerkunft(container) {
+  if (typeof HERKUNFT === 'undefined') return 0;
+  let n = 0;
+  container.querySelectorAll('li').forEach(li => {
+    if (li.querySelector('li')) return;
+    const h = HERKUNFT[fnvHash(li.textContent)];
+    if (!h) return;
+    const [gruppe, von, bis, konf, belege] = h;
+    const span = document.createElement('span');
+    span.className = 'herk' + (konf === 2 ? ' herk-hoch' : '');
+    span.textContent = von === bis ? mmjj(von) : mmjj(von) + '–' + mmjj(bis);
+    span.title = `Quelle: ${gruppe}\nFundzeitraum: ${von === bis ? von : von + ' bis ' + bis}`
+      + `\nBelege: ${belege}\nZuordnung durch Textabgleich, Konfidenz ${konf === 2 ? 'hoch' : 'mittel'}`;
+    li.appendChild(span);
+    n++;
+  });
+  return n;
+}
+
 function annotateProvenance(container) {
   let n = 0;
   container.querySelectorAll('li').forEach(li => {
@@ -1323,19 +1371,21 @@ function annotateProvenance(container) {
   return n;
 }
 
-function provLegendHtml(n, origLabels) {
-  if (!n && !origLabels.length) return '';
+function provLegendHtml(n, origLabels, nHerk) {
+  if (!n && !origLabels.length && !nHerk) return '';
   const belegdichte = n ? `<span class="prov prov-mehrfach">mehrfach berichtet</span>
     <span class="prov prov-einzel">Einzelmeinung</span>
     <span class="prov prov-umstritten">umstritten</span>` : '';
   const extern = origLabels.map(l =>
-    `<span class="orig-extern${l.startsWith('teils') ? ' orig-mixed' : ''}">${l}</span>`).join('');
+    `<span class="orig-extern${l.startsWith('teils') ? ' orig-mixed' : ''}">${l}</span>`).join('')
+    + (nHerk ? '<span class="herk herk-hoch">MM/JJ</span>' : '');
   const hinweise = [];
   if (n) hinweise.push(`${n} Einträge dieses Kapitels sagen im Wortlaut selbst, wie breit sie belegt sind — nur diese sind gekennzeichnet. <strong>Ein Eintrag ohne Kennzeichnung ist keine Einzelmeinung</strong>, seine Belegdichte ist lediglich nicht dokumentiert.`);
   if (origLabels.some(l => !l.startsWith('teils')))
     hinweise.push(`Als <strong>außerhalb TO</strong> markiert ist, was nicht aus Trans-Ocean-Gruppen stammt.`);
   if (origLabels.some(l => l.startsWith('teils')))
     hinweise.push(`<strong>Teils außerhalb TO</strong> heißt: TO-Gruppen und externe Gruppen sind beide eingeflossen, die Zuordnung je Eintrag ist nicht dokumentiert.`);
+  if (nHerk) hinweise.push(`Die Monatsangabe hinter ${nHerk} Einträgen ist der <strong>Fundzeitraum</strong> der zugehörigen Beiträge — Mauszeiger darauf zeigt Quellgruppe und Konfidenz. Sie stammt aus einem Textabgleich und ist kein Beleg; Einträge ohne Angabe liessen sich nicht zuordnen.`);
   return `<div class="prov-legend">
     ${belegdichte}${extern}
     <span class="pl-hint">${hinweise.join(' ')}</span>
@@ -1468,7 +1518,7 @@ function mdToHtml(md) {
       const cells = row.split('|').map(c => c.trim()).filter((c, idx, arr) => idx > 0 && idx < arr.length - 1);
       if (i === 0) {
         t += '<thead><tr>' + cells.map(c => '<th>' + inlineHtml(c) + '</th>').join('') + '</tr></thead><tbody>';
-      } else if (i === 1 && /^[\s\-|]+$/.test(row)) {
+      } else if (i === 1 && /^[\s\-|:]+$/.test(row)) {   // Doppelpunkte für Spaltenausrichtung zulassen
         // separator
       } else {
         t += '<tr>' + cells.map(c => '<td>' + inlineHtml(c) + '</td>').join('') + '</tr>';
@@ -1649,9 +1699,10 @@ function showPage(key) {
     const md = $('#md-content');
     md.innerHTML = safetyNoteHtml(key) + mdToHtml(content);
     const erklaerseite = key === 'methodik';
+    const nHerk = erklaerseite ? 0 : annotateHerkunft(md);
     const n = erklaerseite ? 0 : annotateProvenance(md);
     const herkunft = erklaerseite ? { labels: [], kapitelNotiz: '' } : annotateOrigin(md, key);
-    const html = provLegendHtml(n, herkunft.labels) + herkunft.kapitelNotiz;
+    const html = provLegendHtml(n, herkunft.labels, nHerk) + herkunft.kapitelNotiz;
     if (html) {
       const h1 = md.querySelector('h1');
       if (h1) h1.insertAdjacentHTML('afterend', html);
