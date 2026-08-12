@@ -4,6 +4,10 @@ Dokumentiert Löschungen, Anonymisierungen und Änderungen an den [Grundsätzen]
 
 ---
 
+## Version 2.2 — 12. August 2026
+
+Phase 2 der Roadmap ist abgeschlossen: Methodik-Seite, gemessene Zuordnung der Kapitel zu Quellgruppen, Kennzeichnung von Belegdichte und Herkunft, Hinweise bei sicherheitsrelevanten Themen sowie Quellgruppe und Fundzeitraum für 834 Einträge.
+
 ## 12. August 2026 — Herkunft und Fundzeitraum je Eintrag
 
 Neuauswertung des Gesamtbestands gegen die Originalchats. Jeder Eintrag wurde per Textabgleich gegen den Nachrichtenverlauf geprüft: seltene, trennscharfe Begriffe aus dem Eintrag gegen die Nachrichten, die möglichst viele davon teilen.
@@ -15,10 +19,6 @@ Angezeigt wird der Fundzeitraum als Monatsangabe hinter dem Eintrag, Quellgruppe
 Die Auswertung lief schreibgeschützt; ausgeschlossene Gruppen wurden nicht abgefragt, und es ist kein Nachrichtentext ins Repository gelangt — gespeichert sind je Eintrag nur Gruppenname, Monatsspanne, Konfidenz und Belegzahl.
 
 Damit ist Phase 2 der Roadmap abgeschlossen.
-
-## Version 2.2 — 11. August 2026
-
-Phase 2 der Roadmap ist im Wesentlichen umgesetzt: Methodik-Seite, gemessene Zuordnung der Kapitel zu Quellgruppen, Kennzeichnung von Belegdichte und Herkunft, Hinweise bei sicherheitsrelevanten Themen. **Offen bleibt** die Herkunftsgruppe und der Zeitraum je einzelnem Eintrag — beides ist im veröffentlichten Bestand nicht hinterlegt.
 
 ## 11. August 2026 — Erhebungsweg offengelegt
 
