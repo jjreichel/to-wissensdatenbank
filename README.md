@@ -4,7 +4,7 @@ Gesammeltes Segler-Wissen aus den Trans-Ocean WhatsApp-Gruppen — aufbereitet a
 
 🌐 **Online:** https://jjreichel.github.io/to-wissensdatenbank/
 
-**Version 2.3** · 2.712 Einträge · 15 Themen · ausgewertet August 2025 bis August 2026
+**Version 2.4** · 2.712 Einträge · 15 Themen · ausgewertet August 2025 bis August 2026
 
 ---
 
@@ -47,6 +47,7 @@ Gesammeltes Segler-Wissen aus den Trans-Ocean WhatsApp-Gruppen — aufbereitet a
 
 ## Features
 
+- **Fragen statt blättern** — Frage in eigenen Worten stellen, passende Einträge erscheinen; ohne Sprachmodell, es wird gefunden statt formuliert
 - Volltext-Suche über alle Themen (`⌘ K`)
 - Offline nutzbar — `index.html` und `data.js`, keine externen Abhängigkeiten
 - Helles Layout im Stil eines Logbuchs
@@ -58,13 +59,14 @@ Die **Hauptversion** steht für den Stand der Sammlung, die **Nebenversion** fü
 
 | Version | Stand | Inhalt |
 |---------|-------|--------|
-| **2.3** | August 2026 | Phase 3 · Aktualität lösen — zeitkritische Einträge gekennzeichnet, Verfallslogik, Korrektur-Kanal |
+| **2.4** | August 2026 | Phase 4 · Frageoberfläche über der Sammlung, ohne Sprachmodell |
+| 2.3 | August 2026 | Phase 3 · Aktualität lösen — zeitkritische Einträge gekennzeichnet, Verfallslogik, Korrektur-Kanal |
 | 2.2 | August 2026 | Phase 2 · Transparenz herstellen — Methodik-Seite, gemessene Quellgruppen-Matrix, Belegdichte, Quellgruppe und Fundzeitraum für 834 Einträge, Sicherheitshinweise |
 | 2.1 | August 2026 | Phase 1 · Vertrauen sichern — Bestandsprüfung, Grundsätze, Fundstellen-Verfahren |
 | 2.0 | August 2026 | Auswertung bis August 2026, Bestand auf 2.712 Einträge erweitert |
 | 1.0 | April 2026 | Erste Fassung mit 1.629 Einträgen |
 
-Geplant ist 2.4 für Phase 4 der Roadmap. Der vollständige Verlauf steht im [Changelog](CHANGELOG.md) und ist in der Oberfläche über die Versionsanzeige abrufbar.
+Geplant ist 2.5 für die Governance-Entscheidung der Phase 4. Der vollständige Verlauf steht im [Changelog](CHANGELOG.md) und ist in der Oberfläche über die Versionsanzeige abrufbar.
 
 ## Quelle
 

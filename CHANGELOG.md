@@ -4,6 +4,18 @@ Dokumentiert Löschungen, Anonymisierungen und Änderungen an den [Grundsätzen]
 
 ---
 
+## Version 2.4 — 13. August 2026
+
+**Frageoberfläche über der Sammlung.** Eine Frage in eigenen Worten, und die passenden Einträge erscheinen — mit Kapitel, Abschnitt und allen Markierungen zu Belegdichte, Herkunft und Aktualität.
+
+**Bewusst ohne Sprachmodell.** Es wird gefunden, nicht formuliert: nichts zusammengefasst, nichts geschlussfolgert, nichts ergänzt. Ein Antwortgenerator würde genau die falsche Sicherheit erzeugen, wegen der KI-Antworten in den TO-Gruppen unerwünscht sind. Die Oberfläche läuft vollständig im Browser — die Sammlung bleibt offline nutzbar, ohne Server und ohne Schlüssel.
+
+**Wie gesucht wird:** Frageworte fallen weg, der kennzeichnendste Begriff der Frage muss im Eintrag vorkommen, und Substantive haben Vorrang — sonst bestimmt ein seltenes Frageverb wie „repariere" das Ergebnis. Zusammengesetzte Wörter werden zerlegt, wenn sie im Bestand kaum vorkommen: „Ankerkette" wird als *anker* + *kette* gesucht, weil das Thema in den Gruppen so heisst.
+
+**Offengelegt wird, was fehlt.** Die Oberfläche nennt die gesuchten Begriffe, eine etwaige Zerlegung und welche Teile der Frage im Bestand nicht vorkommen. Findet sie nichts, sagt sie das — zu Seekrankheit etwa gibt es keinen Eintrag, weil der Medizinteil entfernt ist.
+
+Nicht berührt ist damit die **Governance-Frage** der Phase 4: ob die Sammlung unter die Hoheit des Vereins übergeht. Sie bleibt offen.
+
 ## Version 2.3 — 12. August 2026
 
 Phase 3 der Roadmap ist abgeschlossen.

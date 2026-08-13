@@ -37,9 +37,9 @@ Seit dem 11. August 2026 verbindlich festgeschrieben in **[GRUNDSAETZE.md](GRUND
 * [x] Verfallslogik für zeitkritische Kategorien: 336 Einträge als zeitkritisch gekennzeichnet (131 datiert, 205 ohne Datum). Die Regel läuft gegen den Kalender und markiert automatisch als historisch, sobald der Fundzeitraum 12 Monate zurückliegt — **heute greift sie bei keinem Eintrag**, weil der Bestand erst seit September 2025 erhoben wird
 * [x] Korrektur-Kanal je Kapitel über ein vorbereitetes Meldeformular, getrennt vom Fundstellen-Verfahren für Personenbezug
 
-## Phase 4 · Paradigma und Governance *(3 bis 6 Monate)*
+## Phase 4 · Paradigma und Governance *(teilweise umgesetzt)*
 
-* [ ] Chat-Interface über der strukturierten Datenbank: fragen statt blättern
+* [x] [Frageoberfläche](https://jjreichel.github.io/to-wissensdatenbank/#fragen) über der strukturierten Datenbank: fragen statt blättern. Bewusst **ohne Sprachmodell** — sie findet Einträge und formuliert keine Antworten, damit keine falsche Sicherheit entsteht und die Seite offline nutzbar bleibt
 * [ ] Governance-Entscheidung: Übernahme unter TO-Hoheit mit Redaktionsteam und gemeinsamen Regeln, oder dauerhaft privates Projekt mit eindeutiger Kennzeichnung
 * [ ] Bei TO-Übernahme: Opt-in-Regelung für künftige Quellgruppen, beschlossen durch den Verein
 

@@ -398,6 +398,97 @@
   .korrektur a { color: var(--brass); text-decoration: none; border-bottom: 1px solid var(--rule); }
   .korrektur a:hover { color: var(--navy); border-bottom-color: var(--navy); }
 
+  /* ─────────────── FRAGEN ─────────────── */
+  #ask-view { display: none; }
+  #ask-view.active { display: block; }
+  .ask-head { margin-bottom: 26px; }
+  .ask-head h1 {
+    font-family: var(--serif); font-weight: 500;
+    font-size: 44px; line-height: 1.05; letter-spacing: -0.02em;
+    color: var(--navy-deep); margin-top: 10px;
+    font-variation-settings: "opsz" 120;
+  }
+  .ask-head h1 em { font-style: italic; color: var(--brass); }
+  .ask-lead {
+    margin-top: 16px; font-size: 15px; line-height: 1.65;
+    color: var(--ink-2); max-width: 68ch;
+  }
+  .ask-lead strong { color: var(--ink); }
+
+  #ask-form { display: flex; gap: 10px; margin-bottom: 30px; }
+  #ask-input {
+    flex: 1;
+    font-family: var(--sans); font-size: 15px;
+    padding: 13px 16px;
+    color: var(--ink);
+    background: var(--card);
+    border: 1px solid var(--card-edge);
+    border-radius: var(--radius);
+    outline: none;
+  }
+  #ask-input:focus { border-color: var(--brass-soft); box-shadow: 0 0 0 3px rgba(166,124,47,.1); }
+  #ask-input::placeholder { color: var(--ink-faint); }
+  #ask-submit {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0 22px;
+    color: #f5ead3; background: var(--navy);
+    border: 1px solid var(--navy-deep); border-radius: var(--radius);
+    cursor: pointer;
+  }
+  #ask-submit:hover { background: var(--navy-deep); }
+
+  .ask-turn { margin-bottom: 38px; padding-bottom: 30px; border-bottom: 1px solid var(--rule-soft); }
+  .ask-turn:last-child { border-bottom: 0; }
+  .ask-q {
+    font-family: var(--serif); font-size: 21px; font-weight: 500;
+    color: var(--navy-deep); line-height: 1.35;
+    display: flex; gap: 11px; align-items: baseline;
+  }
+  .ask-q::before {
+    content: "?"; flex: none;
+    font-family: var(--mono); font-size: 15px; color: var(--brass);
+  }
+  .ask-status {
+    margin: 10px 0 20px 26px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em;
+    color: var(--ink-faint); line-height: 1.7;
+  }
+  .ask-results { margin-left: 26px; }
+  .ans-item { margin-bottom: 18px; }
+  .ans-meta {
+    font-family: var(--mono); font-size: 9.5px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--brass); margin-bottom: 3px;
+  }
+  .ans-meta a { color: inherit; text-decoration: none; border-bottom: 1px solid transparent; }
+  .ans-meta a:hover { border-bottom-color: var(--brass); }
+  .ans-item ul { list-style: none; margin: 0; }
+  .ans-item li {
+    position: relative; padding-left: 15px;
+    font-size: 14.5px; line-height: 1.65; color: var(--ink);
+  }
+  .ans-item li::before {
+    content: "•"; position: absolute; left: 0; color: var(--brass-soft);
+  }
+  .ask-leer {
+    margin-left: 26px; padding: 16px 18px;
+    background: rgba(27,39,64,.03);
+    border: 1px solid var(--rule-soft); border-radius: var(--radius);
+    font-size: 14px; line-height: 1.6; color: var(--ink-2);
+  }
+  .ask-leer strong { color: var(--ink); }
+  .ask-warn {
+    display: flex; gap: 10px; align-items: flex-start;
+    margin: 0 0 20px 26px; padding: 11px 14px;
+    background: rgba(168,65,42,.05);
+    border: 1px solid rgba(168,65,42,.2);
+    border-left: 2px solid var(--signal);
+    border-radius: var(--radius);
+    font-size: 13px; line-height: 1.55; color: var(--ink-2);
+  }
+  .ask-warn .sn-icon { width: 15px; height: 15px; flex: none; margin-top: 2px; color: var(--signal); }
+  .ask-warn a { color: var(--signal); text-decoration: none; border-bottom: 1px solid rgba(168,65,42,.35); }
+
   /* ─────────────── MAIN ─────────────── */
   #main {
     flex: 1;
@@ -1072,6 +1163,10 @@
         <svg class="nav-icon"><use href="#i-book"/></svg>
         <span class="nav-label">Übersicht</span>
       </a></li>
+      <li><a href="#" data-key="fragen">
+        <svg class="nav-icon"><use href="#i-search"/></svg>
+        <span class="nav-label">Fragen</span>
+      </a></li>
       <li><a href="#" data-key="methodik">
         <svg class="nav-icon"><use href="#i-doc"/></svg>
         <span class="nav-label">Methodik</span>
@@ -1194,6 +1289,24 @@
 
       <section id="page-view" class="hidden"><div class="md-page" id="md-content"></div></section>
 
+      <!-- Fragen: findet Einträge, formuliert keine Antworten -->
+      <section id="ask-view" class="hidden">
+        <header class="ask-head">
+          <div class="ov-kicker">Fragen statt blättern</div>
+          <h1>Was möchtest du <em>wissen?</em></h1>
+          <p class="ask-lead">
+            Stelle eine Frage in eigenen Worten. Die Sammlung sucht die passenden Einträge und zeigt sie —
+            <strong>sie formuliert keine Antwort</strong>. Was du liest, steht so in der Datenbank, mit allen
+            Angaben zu Belegdichte, Herkunft und Aktualität.
+          </p>
+        </header>
+        <form id="ask-form" autocomplete="off">
+          <input type="text" id="ask-input" placeholder="z. B. Welche Ankerkette für Langfahrt? Was kostet Überwintern in Griechenland?" spellcheck="false">
+          <button type="submit" id="ask-submit">Fragen</button>
+        </form>
+        <div id="ask-turns"></div>
+      </section>
+
       <section id="search-view">
         <div id="search-header"></div>
         <div id="search-results-list"></div>
@@ -1227,6 +1340,8 @@
 // ───── Versionierung ─────
 // Einzige Pflegestelle: neue Version oben ergänzen, Nebenversion je Roadmap-Phase hochzählen.
 const VERSIONS = [
+  { v: '2.4', date: '13. August 2026', title: 'Phase 4 · Fragen statt blättern',
+    desc: 'Frageoberfläche über der Sammlung: eine Frage in eigenen Worten findet die passenden Einträge, mit Leitbegriff, Wortzerlegung und offengelegten Lücken. Bewusst ohne Sprachmodell — es wird gefunden, nicht formuliert, und die Seite bleibt offline nutzbar. Die Governance-Frage der Phase 4 ist damit nicht berührt und bleibt offen.' },
   { v: '2.3', date: '12. August 2026', title: 'Phase 3 · Aktualität lösen',
     desc: 'Zeitkritische Einträge gekennzeichnet — Preise, Gebühren, behördliche Angaben. Verfallslogik: solche Einträge werden automatisch als historisch markiert, sobald ihr Fundzeitraum zwölf Monate zurückliegt. Korrektur-Kanal je Kapitel über ein vorbereitetes Meldeformular.' },
   { v: '2.2', date: '12. August 2026', title: 'Phase 2 · Transparenz herstellen',
@@ -1239,7 +1354,7 @@ const VERSIONS = [
     desc: 'Aufbau als durchsuchbare Wissensdatenbank mit 1.629 Einträgen.' },
 ];
 const VERSION_NEXT = [
-  { v: '2.4', title: 'Phase 4 · Paradigma und Governance' },
+  { v: '2.5', title: 'Phase 4 · Governance-Entscheidung' },
 ];
 const VERSION = VERSIONS[0];
 
@@ -1597,6 +1712,20 @@ function renderTiles() {
 renderTiles();
 
 // ───── markdown → html ─────
+// Inline-Markdown. Auf oberster Ebene, weil auch die Frage-Ansicht sie braucht.
+function inlineHtml(text) {
+  return text
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    .replace(/`(.+?)`/g, '<code>$1</code>')
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, function(m, text, url) {
+      const km = url.match(/^([a-z]+)\.md$/);
+      if (km) return '<a href="#" data-key="' + km[1] + '">' + text + '</a>';
+      return '<a href="' + url + '" target="_blank" rel="noopener">' + text + '</a>';
+    });
+}
+
 function mdToHtml(md) {
   const lines = md.split('\n');
   let html = '';
@@ -1633,18 +1762,6 @@ function mdToHtml(md) {
     return '</' + tag + '>';
   }
 
-  function inlineHtml(text) {
-    return text
-      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\*(.+?)\*/g, '<em>$1</em>')
-      .replace(/`(.+?)`/g, '<code>$1</code>')
-      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, function(m, text, url) {
-        const km = url.match(/^([a-z]+)\.md$/);
-        if (km) return '<a href="#" data-key="' + km[1] + '">' + text + '</a>';
-        return '<a href="' + url + '" target="_blank" rel="noopener">' + text + '</a>';
-      });
-  }
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
@@ -1765,6 +1882,251 @@ function snippet(text, terms, maxLen) {
   return highlight(s, terms);
 }
 
+// ───── FRAGEN: findet Einträge, formuliert keine Antworten (Roadmap Phase 4) ─────
+// Bewusst kein Sprachmodell: die Sammlung soll zeigen, was sie hat, und nicht
+// klingen, als wüsste sie mehr. Läuft vollständig offline.
+
+const norm4 = s => s.toLowerCase()
+  .replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss');
+
+// Wird normalisiert aufgebaut, sonst greift der Vergleich bei Umlauten nicht
+const FRAGE_STOPP = new Set(norm4(`
+wie was wo wann warum wieso weshalb welche welcher welches welchen wem wen wer
+ist sind war waren wird werden kann können könnte muss müssen soll sollte sollen darf
+habe hat haben hatte gibt es gibt macht machen tun brauche brauchen benötige benötigen
+ich du wir ihr sie man mein meine meinem meinen unser unsere dein deine
+der die das den dem des ein eine einen einem einer eines kein keine
+und oder aber auch noch schon nur mal etwa circa ungefähr vielleicht eigentlich
+für mit von aus auf bei nach vor über unter zwischen ohne gegen zu zum zur im in am an
+am besten gut gute guter beste bester besten sinnvoll empfehlenswert empfohlen
+sich nicht mehr sehr viel viele wenig denn dann also wenn falls ob dass daß
+bitte danke hallo moin
+sicher unsicher zuverlaessig robust einfach schwierig billig teuer guenstig praktisch
+gross grosse klein kleine lang lange kurz kurze hoch hohe niedrig schnell langsam
+richtig falsch neu alt besser schlechter geeignet notwendig noetig
+`).trim().split(/\s+/));
+
+// Fachbegriffe, die Segler unterschiedlich benennen
+const FRAGE_SYNONYME = {
+  wassermacher: ['watermaker', 'entsalzer', 'osmose'],
+  watermaker: ['wassermacher', 'entsalzer'],
+  weste: ['rettungsweste', 'schwimmweste', 'automatikweste'],
+  rettungsweste: ['weste', 'schwimmweste'],
+  kette: ['ankerkette', 'kettenvorlauf'],
+  ankerkette: ['kette'],
+  winsch: ['ankerwinsch', 'winde'],
+  solar: ['solarpanel', 'photovoltaik', 'solarmodul'],
+  batterie: ['akku', 'lifepo4', 'batteriebank', 'hausbank'],
+  akku: ['batterie', 'lifepo4'],
+  lifepo4: ['batterie', 'lithium'],
+  internet: ['starlink', 'satellit', 'mobilfunk', 'sim'],
+  starlink: ['internet', 'satellit'],
+  ueberwintern: ['winterlager', 'ueberwinterung', 'winter'],
+  winterlager: ['ueberwintern', 'ueberwinterung'],
+  werft: ['marina', 'hafen', 'travellift'],
+  antifouling: ['unterwasserschiff', 'uws', 'coppercoat'],
+  orca: ['orcas', 'schwertwal', 'interaktion'],
+  versicherung: ['police', 'kasko', 'deckung'],
+  einklarieren: ['einklarierung', 'formalitaeten', 'behoerde'],
+  motor: ['diesel', 'maschine'],
+  funk: ['vhf', 'ssb', 'seefunk'],
+};
+
+// Eintragsindex: ein Eintrag ist ein Aufzählungspunkt, mit seinem Abschnitt
+let eintragIndex = null;
+function baueEintragIndex() {
+  const idx = [];
+  for (const [key, text] of Object.entries(PAGES)) {
+    if (key === 'index' || key === 'methodik') continue;
+    let h2 = '', h3 = '';
+    for (const line of text.split('\n')) {
+      if (/^##\s/.test(line)) { h2 = line.replace(/^#+\s*/, ''); h3 = ''; continue; }
+      if (/^###\s/.test(line)) { h3 = line.replace(/^#+\s*/, ''); continue; }
+      if (!/^[-*]\s+\S/.test(line)) continue;
+      const roh = line.replace(/^[-*]\s+/, '');
+      if (roh.length < 20) continue;
+      idx.push({ key, h2, h3, roh, norm: norm4(roh) });
+    }
+  }
+  // Dokumentfrequenz für die Gewichtung
+  const df = new Map();
+  for (const e of idx) {
+    for (const t of new Set(e.norm.match(/[a-z0-9]{3,}/g) || [])) df.set(t, (df.get(t) || 0) + 1);
+  }
+  return { idx, df, N: idx.length };
+}
+
+function frageBegriffe(frage) {
+  const kern = [], nomen = new Set(), original = new Map();
+  for (const tok of frage.match(/[A-Za-zÄÖÜäöüß0-9][A-Za-zÄÖÜäöüß0-9-]{2,}/g) || []) {
+    const n = norm4(tok).replace(/-/g, '');
+    if (n.length < 3 || FRAGE_STOPP.has(n)) continue;
+    kern.push(n);
+    if (!original.has(n)) original.set(n, tok);
+    // Großschreibung ist im Deutschen ein starker Hinweis auf ein Substantiv —
+    // und damit auf das Thema der Frage, nicht auf ihre Formulierung.
+    if (/^[A-ZÄÖÜ]/.test(tok)) nomen.add(n);
+  }
+  const erweitert = new Set(kern);
+  for (const t of kern) for (const syn of FRAGE_SYNONYME[t] || []) erweitert.add(norm4(syn));
+  return { kern, alle: [...erweitert], nomen, original };
+}
+
+function frageSuche(frage) {
+  if (!eintragIndex) eintragIndex = baueEintragIndex();
+  const { idx, df, N } = eintragIndex;
+  const { kern, alle, nomen, original } = frageBegriffe(frage);
+  const wie = t => original.get(t) || t;   // Anzeige in der Schreibweise der Frage
+  if (!kern.length) return { kern: [], treffer: [], grund: 'keine Begriffe' };
+
+  const gewicht = t => Math.log(1 + N / (1 + (df.get(t) || 0)));
+  // Begriffe, die in mehr als 12 % aller Einträge stehen, unterscheiden nichts
+  const brauchbar = kern.filter(t => (df.get(t) || 0) <= N * 0.12);
+  if (!brauchbar.length) return { kern: kern.map(wie), treffer: [], grund: 'zu allgemein' };
+
+  // Der Leitbegriff ist das Thema der Frage. Er MUSS im Eintrag vorkommen —
+  // sonst antwortet die Suche auf eine andere Frage als die gestellte, nur weil
+  // ein Wort der Formulierung zufällig passt. Substantive haben Vorrang, sonst
+  // gewinnen seltene Frageverben wie "repariere" oder "schütze".
+  const imBestand = t => (df.get(t) || 0) > 0;
+  const substantive = brauchbar.filter(t => nomen.has(t));
+  // Was die Frage nennt, der Bestand aber nicht kennt — das gehört in die Antwort,
+  // sonst sieht sie aus, als hätte sie die ganze Frage beantwortet.
+  const fehlend = substantive.filter(t => !imBestand(t));
+  const kandidatenBegriffe = substantive.length ? substantive : brauchbar;
+  const vorhanden = kandidatenBegriffe.filter(imBestand);
+  if (!vorhanden.length)
+    return { kern: brauchbar.map(wie), treffer: [], grund: 'nicht im Bestand',
+             leit: wie(kandidatenBegriffe.slice().sort((a, b) => gewicht(b) - gewicht(a))[0]),
+             fehlend: fehlend.map(wie) };
+
+  const leit = vorhanden.slice().sort((a, b) => gewicht(b) - gewicht(a))[0];
+
+  // Deutsche Komposita: "Ankerkette" steht kaum im Bestand, das Thema heisst dort
+  // "Kette". Lässt sich der Begriff in zwei bekannte Teile zerlegen, verlangen wir
+  // beide — das ist genauer als jeder Teil allein.
+  let zerlegung = null;
+  if ((df.get(leit) || 0) < 10 && leit.length >= 8) {
+    for (let i = 4; i <= leit.length - 4; i++) {
+      const a = leit.slice(0, i), b = leit.slice(i);
+      if ((df.get(a) || 0) >= 3 && (df.get(b) || 0) >= 3) { zerlegung = [a, b]; break; }
+    }
+  }
+  if (zerlegung) {
+    const beide = idx.filter(e => zerlegung.every(t => e.norm.includes(t)));
+    if (beide.length) {
+      const treffer2 = beide.map(e => {
+        let punkte = 0;
+        for (const t of [...zerlegung, ...alle]) {
+          if ((df.get(t) || 0) > N * 0.12 || !e.norm.includes(t)) continue;
+          punkte += gewicht(t) * (norm4(e.h2 + ' ' + e.h3).includes(t) ? 2 : 1);
+        }
+        return { ...e, punkte, getroffen: zerlegung.length };
+      }).sort((a, b) => b.punkte - a.punkte);
+      const best2 = treffer2[0].punkte;
+      return { kern: brauchbar.map(wie), leit: wie(leit), zerlegung, fehlend: fehlend.map(wie),
+               treffer: treffer2.filter(t => t.punkte >= best2 * 0.5).slice(0, 8) };
+    }
+  }
+  // Synonyme nur zulassen, wenn sie ähnlich spezifisch sind — ein breites
+  // Synonym würde den Filter aushebeln, den der Leitbegriff gerade setzt.
+  const leitDf = df.get(leit) || 1;
+  const leitVarianten = [leit, ...(FRAGE_SYNONYME[leit] || []).map(norm4)
+    .filter(v => (df.get(v) || 0) > 0 && (df.get(v) || 0) <= leitDf * 3)];
+  const kandidaten = idx.filter(e => leitVarianten.some(v => e.norm.includes(v)));
+  if (!kandidaten.length) return { kern: brauchbar.map(wie), treffer: [], grund: 'nicht im Bestand', leit: wie(leit), fehlend: fehlend.map(wie) };
+
+  const treffer = [];
+  for (const e of kandidaten) {
+    let punkte = 0, getroffen = 0;
+    for (const t of alle) {
+      if ((df.get(t) || 0) > N * 0.12) continue;
+      if (!e.norm.includes(t)) continue;
+      getroffen++;
+      const imTitel = norm4(e.h2 + ' ' + e.h3).includes(t);
+      punkte += gewicht(t) * (kern.includes(t) ? 1 : 0.6) * (imTitel ? 2 : 1);
+    }
+    punkte *= 1 + 0.35 * (getroffen - 1);
+    treffer.push({ ...e, punkte, getroffen });
+  }
+  treffer.sort((a, b) => b.punkte - a.punkte);
+  const best = treffer[0].punkte;
+  return { kern: brauchbar.map(wie), leit: wie(leit), fehlend: fehlend.map(wie), treffer: treffer.filter(t => t.punkte >= best * 0.5).slice(0, 8) };
+}
+
+function frageStellen(frage) {
+  const turns = $('#ask-turns');
+  const { kern, treffer, grund, leit, zerlegung, fehlend } = frageSuche(frage);
+  const turn = document.createElement('div');
+  turn.className = 'ask-turn';
+
+  const kapitel = [...new Set(treffer.map(t => t.key))];
+  // Kein Warnhinweis im Volltext: er gilt fürs ganze Kapitel und passt deshalb
+  // selten zur konkreten Frage — bei Antifouling erschien sonst der Orca-Hinweis,
+  // nur weil ein Treffer aus jenem Kapitel stammt. Stattdessen ein Verweis auf
+  // die Kapitel, in denen ein Hinweis steht.
+  const mitHinweis = kapitel.filter(k => SAFETY_NOTES[k]);
+  const hinweise = mitHinweis.length ? `<div class="ask-warn">
+      <svg class="sn-icon" aria-hidden="true"><use href="#i-alert"/></svg>
+      <span>Treffer aus ${mitHinweis.map(k => `<a href="#" data-key="${k}">${TOPIC_LABELS[k]}</a>`).join(', ')} —
+      ${mitHinweis.length === 1
+        ? 'dieses Kapitel trägt einen Sicherheitshinweis, der für die Einordnung wichtig ist'
+        : 'diese Kapitel tragen Sicherheitshinweise, die für die Einordnung wichtig sind'}.
+      Bitte im Kapitel selbst lesen.</span>
+    </div>` : '';
+
+  if (!treffer.length) {
+    const erklaerung = {
+      'keine Begriffe': 'Die Frage enthielt keine durchsuchbaren Begriffe.',
+      'zu allgemein': `Die Begriffe (${kern.map(esc).join(', ')}) sind zu allgemein — sie kommen in zu vielen Einträgen vor, um etwas zu unterscheiden.`,
+      'nicht im Bestand': `Zu <em>${esc(leit || '')}</em> gibt es keinen Eintrag.`,
+    }[grund] || '';
+    turn.innerHTML = `<div class="ask-q">${esc(frage)}</div>
+      <div class="ask-leer"><strong>Dazu steht nichts in der Sammlung.</strong> ${erklaerung}
+      Möglich ist beides: ein anderer Begriff führt weiter, oder das Thema wurde in den
+      ausgewerteten Gruppen nicht besprochen. Medizinische Themen sind bewusst nicht enthalten.
+      Fehlt etwas zu Unrecht, ist ein Hinweis willkommen.</div>`;
+  } else {
+    turn.innerHTML = `<div class="ask-q">${esc(frage)}</div>
+      <div class="ask-status">${treffer.length} passende ${treffer.length === 1 ? 'Eintrag' : 'Einträge'}
+        aus ${kapitel.length} ${kapitel.length === 1 ? 'Kapitel' : 'Kapiteln'} ·
+        gesucht nach ${kern.map(esc).join(', ')}${zerlegung ? ` · <em>${esc(leit)}</em> als ${zerlegung.map(esc).join(' + ')} gesucht` : ''} ·
+        nach Relevanz sortiert, nicht zusammengefasst${fehlend && fehlend.length ? `<br>Kein Eintrag zu: ${fehlend.map(esc).join(', ')} — diese Teile der Frage bleiben unbeantwortet.` : ''}</div>
+      ${hinweise}
+      <div class="ask-results">${treffer.map(t => `
+        <div class="ans-item">
+          <div class="ans-meta"><a href="#" data-key="${t.key}">${TOPIC_LABELS[t.key]}</a>${t.h2 ? ' · ' + esc(t.h2) : ''}${t.h3 ? ' · ' + esc(t.h3) : ''}</div>
+          <ul><li>${inlineHtml(t.roh)}</li></ul>
+        </div>`).join('')}</div>`;
+  }
+  turns.insertBefore(turn, turns.firstChild);
+  // Dieselben Markierungen wie im Kapitel — Antworten sollen nicht frischer wirken
+  annotateEintrag(turn);
+  annotateProvenance(turn);
+  $('#content-area').scrollTop = 0;
+}
+
+function esc(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function showAsk() {
+  currentPage = 'fragen';
+  $('#search').value = '';
+  $('#search-wrap').classList.remove('has-query');
+  $('#search-view').classList.remove('active');
+  $('#overview').classList.add('hidden');
+  $('#overview').classList.remove('visible');
+  $('#page-view').classList.add('hidden');
+  $('#ask-view').classList.add('active');
+  $('#ask-view').classList.remove('hidden');
+  setActiveNav('fragen');
+  $('#crumb-now').textContent = 'Fragen';
+  $('#content-area').scrollTop = 0;
+  $('#ask-input').focus();
+  if (history.replaceState) history.replaceState(null, '', '#fragen');
+}
+
 // ───── navigation ─────
 let currentPage = 'index';
 const $ = (sel) => document.querySelector(sel);
@@ -1782,6 +2144,8 @@ function showPage(key) {
   $('#search-wrap').classList.remove('has-query');
 
   $('#search-view').classList.remove('active');
+  $('#ask-view').classList.remove('active');
+  $('#ask-view').classList.add('hidden');
   $('#overview').classList.add('hidden');
   $('#overview').classList.remove('visible');
   $('#page-view').classList.remove('hidden');
@@ -1815,6 +2179,7 @@ function showSearch(q) {
   $('#search-wrap').classList.add('has-query');
   $('#overview').classList.add('hidden');
   $('#page-view').classList.add('hidden');
+  $('#ask-view').classList.remove('active');
   $('#search-view').classList.add('active');
 
   const results = doSearch(q);
@@ -1857,6 +2222,7 @@ function clearSearch() {
 // ───── event wiring (delegation) ─────
 document.addEventListener('click', (e) => {
   const a = e.target.closest('[data-key]');
+  if (a && a.dataset.key === 'fragen') { e.preventDefault(); showAsk(); return; }
   if (a) {
     e.preventDefault();
     showPage(a.dataset.key);
@@ -1879,9 +2245,19 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
+$('#ask-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const frage = $('#ask-input').value.trim();
+  if (!frage) return;
+  frageStellen(frage);
+  $('#ask-input').value = '';
+  $('#ask-input').focus();
+});
+
 // ───── boot ─────
 const hash = window.location.hash.slice(1);
-showPage(hash && (PAGES[hash] || hash === 'index') ? hash : 'index');
+if (hash === 'fragen') showAsk();
+else showPage(hash && (PAGES[hash] || hash === 'index') ? hash : 'index');
 </script>
 </body>
 </html>
