@@ -110,6 +110,13 @@
     font-variation-settings: "opsz" 48;
     color: var(--navy-deep);
   }
+  .brand-stand {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+    color: var(--navy-deep);
+    margin-top: 3px;
+  }
   .brand-sub {
     font-family: var(--mono);
     font-size: 10px;
@@ -1125,6 +1132,9 @@
       <path d="M4 4 H10 a3 3 0 0 1 3 3 V20 a2 2 0 0 0 -2-2 H4 Z"/>
       <path d="M20 4 H14 a3 3 0 0 0 -3 3 V20 a2 2 0 0 1 2-2 H20 Z"/>
     </symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 20 H20 M7 16 V11 M11.5 16 V6 M16 16 V9"/>
+    </symbol>
     <symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
       <path d="M6 3 H14 L18.5 7.5 V21 H6 Z"/>
       <path d="M14 3 V7.5 H18.5"/>
@@ -1146,6 +1156,7 @@
       <svg class="brand-mark"><use href="#i-compass"/></svg>
       <div class="brand-text">
         <div class="brand-name">SV Viking</div>
+        <div class="brand-stand" id="brand-stand"></div>
         <div class="brand-sub">Logbuch · Wissen</div>
       </div>
     </div>
@@ -1171,37 +1182,41 @@
         <svg class="nav-icon"><use href="#i-doc"/></svg>
         <span class="nav-label">Methodik</span>
       </a></li>
+      <li><a href="#" data-key="statistik">
+        <svg class="nav-icon"><use href="#i-chart"/></svg>
+        <span class="nav-label">Statistik</span>
+      </a></li>
     </ul></nav>
 
     <div class="nav-section-label">Technik an Bord</div>
     <nav><ul>
-      <li><a href="#" data-key="elektrik"><svg class="nav-icon"><use href="#i-elektrik"/></svg><span class="nav-label">Elektrik</span><span class="nav-count">385</span></a></li>
-      <li><a href="#" data-key="motorentechnik"><svg class="nav-icon"><use href="#i-motor"/></svg><span class="nav-label">Motorentechnik</span><span class="nav-count">329</span></a></li>
-      <li><a href="#" data-key="mechanik"><svg class="nav-icon"><use href="#i-mechanik"/></svg><span class="nav-label">Mechanik</span><span class="nav-count">277</span></a></li>
-      <li><a href="#" data-key="satellitenkommunikation"><svg class="nav-icon"><use href="#i-satellite"/></svg><span class="nav-label">Satellit</span><span class="nav-count">195</span></a></li>
-      <li><a href="#" data-key="wassersysteme"><svg class="nav-icon"><use href="#i-water"/></svg><span class="nav-label">Wassersysteme</span><span class="nav-count">165</span></a></li>
-      <li><a href="#" data-key="funk"><svg class="nav-icon"><use href="#i-radio"/></svg><span class="nav-label">Funk</span><span class="nav-count">64</span></a></li>
+      <li><a href="#" data-key="elektrik"><svg class="nav-icon"><use href="#i-elektrik"/></svg><span class="nav-label">Elektrik</span><span class="nav-count">432</span></a></li>
+      <li><a href="#" data-key="motorentechnik"><svg class="nav-icon"><use href="#i-motor"/></svg><span class="nav-label">Motorentechnik</span><span class="nav-count">370</span></a></li>
+      <li><a href="#" data-key="mechanik"><svg class="nav-icon"><use href="#i-mechanik"/></svg><span class="nav-label">Mechanik</span><span class="nav-count">308</span></a></li>
+      <li><a href="#" data-key="satellitenkommunikation"><svg class="nav-icon"><use href="#i-satellite"/></svg><span class="nav-label">Satellit</span><span class="nav-count">221</span></a></li>
+      <li><a href="#" data-key="wassersysteme"><svg class="nav-icon"><use href="#i-water"/></svg><span class="nav-label">Wassersysteme</span><span class="nav-count">182</span></a></li>
+      <li><a href="#" data-key="funk"><svg class="nav-icon"><use href="#i-radio"/></svg><span class="nav-label">Funk</span><span class="nav-count">68</span></a></li>
     </ul></nav>
 
     <div class="nav-section-label">Reviere</div>
     <nav><ul>
-      <li><a href="#" data-key="mittelmeer"><svg class="nav-icon"><use href="#i-wave"/></svg><span class="nav-label">Mittelmeer</span><span class="nav-count">292</span></a></li>
-      <li><a href="#" data-key="karibik"><svg class="nav-icon"><use href="#i-palm"/></svg><span class="nav-label">Karibik</span><span class="nav-count">133</span></a></li>
-      <li><a href="#" data-key="atlantik"><svg class="nav-icon"><use href="#i-nav"/></svg><span class="nav-label">Atlantik</span><span class="nav-count">86</span></a></li>
-      <li><a href="#" data-key="navigation"><svg class="nav-icon"><use href="#i-map"/></svg><span class="nav-label">Navigation</span><span class="nav-count">65</span></a></li>
-      <li><a href="#" data-key="wetter"><svg class="nav-icon"><use href="#i-weather"/></svg><span class="nav-label">Wetter</span><span class="nav-count">69</span></a></li>
+      <li><a href="#" data-key="mittelmeer"><svg class="nav-icon"><use href="#i-wave"/></svg><span class="nav-label">Mittelmeer</span><span class="nav-count">350</span></a></li>
+      <li><a href="#" data-key="karibik"><svg class="nav-icon"><use href="#i-palm"/></svg><span class="nav-label">Karibik</span><span class="nav-count">151</span></a></li>
+      <li><a href="#" data-key="atlantik"><svg class="nav-icon"><use href="#i-nav"/></svg><span class="nav-label">Atlantik</span><span class="nav-count">91</span></a></li>
+      <li><a href="#" data-key="navigation"><svg class="nav-icon"><use href="#i-map"/></svg><span class="nav-label">Navigation</span><span class="nav-count">81</span></a></li>
+      <li><a href="#" data-key="wetter"><svg class="nav-icon"><use href="#i-weather"/></svg><span class="nav-label">Wetter</span><span class="nav-count">76</span></a></li>
     </ul></nav>
 
     <div class="nav-section-label">Sicherheit & Crew</div>
     <nav><ul>
-      <li><a href="#" data-key="sicherheit"><svg class="nav-icon"><use href="#i-lifebuoy"/></svg><span class="nav-label">Sicherheit</span><span class="nav-count">148</span></a></li>
-      <li><a href="#" data-key="versicherungen"><svg class="nav-icon"><use href="#i-shield"/></svg><span class="nav-label">Versicherungen</span><span class="nav-count">174</span></a></li>
+      <li><a href="#" data-key="sicherheit"><svg class="nav-icon"><use href="#i-lifebuoy"/></svg><span class="nav-label">Sicherheit</span><span class="nav-count">160</span></a></li>
+      <li><a href="#" data-key="versicherungen"><svg class="nav-icon"><use href="#i-shield"/></svg><span class="nav-label">Versicherungen</span><span class="nav-count">182</span></a></li>
     </ul></nav>
 
     <div class="nav-section-label">Sonstiges</div>
     <nav><ul>
-      <li><a href="#" data-key="lossegler"><svg class="nav-icon"><use href="#i-sailboat"/></svg><span class="nav-label">Lossegler</span><span class="nav-count">106</span></a></li>
-      <li><a href="#" data-key="diverses"><svg class="nav-icon"><use href="#i-box"/></svg><span class="nav-label">Diverses</span><span class="nav-count">224</span></a></li>
+      <li><a href="#" data-key="lossegler"><svg class="nav-icon"><use href="#i-sailboat"/></svg><span class="nav-label">Lossegler</span><span class="nav-count">122</span></a></li>
+      <li><a href="#" data-key="diverses"><svg class="nav-icon"><use href="#i-box"/></svg><span class="nav-label">Diverses</span><span class="nav-count">251</span></a></li>
     </ul></nav>
   </div>
 
@@ -1245,9 +1260,9 @@
             Technik, Reviere, Sicherheit. Von denen, die unterwegs sind, für die, die es werden wollen.
           </p>
           <div class="ov-stats">
-            <div class="ov-stat"><span class="val">2 712</span><span class="lbl">Einträge</span></div>
+            <div class="ov-stat"><span class="val">3 045</span><span class="lbl">Einträge</span></div>
             <div class="ov-stat"><span class="val">15</span><span class="lbl">Themen</span></div>
-            <div class="ov-stat"><span class="val">Aug ‘25 – Aug ‘26</span><span class="lbl">Zeitraum</span></div>
+            <div class="ov-stat"><span class="val">Aug ‘25 – Sep ‘26</span><span class="lbl">Zeitraum</span></div>
             <div class="ov-stat is-version" id="version-stat" title="Versionsverlauf anzeigen"><span class="val" id="version-stat-num">—</span><span class="lbl">Version</span></div>
           </div>
         </header>
@@ -1339,8 +1354,9 @@
 <script>
 // ───── Versionierung ─────
 // Einzige Pflegestelle: neue Version oben ergänzen, Nebenversion je Roadmap-Phase hochzählen.
+// bis: letzter ausgewerteter Monat, erscheint unter dem Namen in der Sidebar.
 const VERSIONS = [
-  { v: '3.0', date: '26. September 2026', title: 'Auswertung bis September 2026',
+  { v: '3.0', date: '26. September 2026', bis: 'Sep 2026', title: 'Auswertung bis September 2026',
     desc: 'Gruppen vom 7. August bis 26. September 2026 ausgewertet: 335 neue und 8 aktualisierte Einträge, Bestand jetzt 3.045. Schwerpunkte: Starlink-Tarifwechsel und 30-Tage-Regel, Winterplätze Mittelmeer 2026/27, Starten und Starterbatterie, Ankerwinsch-Fehlersuche, Hurrikan-Saison Karibik. Neue Einträge tragen Quellgruppe und Fundzeitraum direkt aus der Erhebung.' },
   { v: '2.4', date: '13. August 2026', title: 'Phase 4 · Fragen statt blättern',
     desc: 'Frageoberfläche über der Sammlung: eine Frage in eigenen Worten findet die passenden Einträge, mit Leitbegriff, Wortzerlegung und offengelegten Lücken. Bewusst ohne Sprachmodell — es wird gefunden, nicht formuliert, und die Seite bleibt offline nutzbar. Die Governance-Frage der Phase 4 ist damit nicht berührt und bleibt offen.' },
@@ -1619,6 +1635,7 @@ function safetyNoteHtml(key) {
 
 (() => {
   document.getElementById('version-chip-num').textContent   = 'v' + VERSION.v;
+  document.getElementById('brand-stand').textContent        = 'v' + VERSION.v + ' · Stand ' + VERSION.bis;
   document.getElementById('version-chip-phase').textContent = VERSION.title.replace(/^Phase \d+ · /, '');
   document.getElementById('version-stat-num').textContent   = VERSION.v;
 
@@ -1651,24 +1668,24 @@ function safetyNoteHtml(key) {
 
 // ───── topic meta (icon, short description, count, group) ─────
 const TOPIC_META = {
-  elektrik:               { icon: '#i-elektrik',  desc: 'Batterien, Solar, Victron, Router, AIS/VHF, Blitzschutz.',           count: 385, group: 'technik' },
-  motorentechnik:         { icon: '#i-motor',     desc: 'Diesel, Kraftstoff, Filter, Turbo, Wellenanlage.',                    count: 329, group: 'technik' },
-  mechanik:               { icon: '#i-mechanik',  desc: 'Werften, Antifouling, Dichtungen, Dinghy, Rigg, Anker.',              count: 277, group: 'technik' },
-  satellitenkommunikation:{ icon: '#i-satellite', desc: 'Starlink, Iridium, Garmin inReach, Yellowbrick.',                     count: 195, group: 'technik' },
-  wassersysteme:          { icon: '#i-water',     desc: 'Watermaker, Tanks, Boiler, Pumpen, Schläuche.',                       count:  165, group: 'technik' },
-  funk:                   { icon: '#i-radio',     desc: 'VHF, SSB, DSC, MMSI, Antennen, Funkzeugnisse.',                       count:  64, group: 'technik' },
+  elektrik:               { icon: '#i-elektrik',  desc: 'Batterien, Solar, Victron, Router, AIS/VHF, Blitzschutz.',           count: 432, group: 'technik' },
+  motorentechnik:         { icon: '#i-motor',     desc: 'Diesel, Kraftstoff, Filter, Turbo, Wellenanlage.',                    count: 370, group: 'technik' },
+  mechanik:               { icon: '#i-mechanik',  desc: 'Werften, Antifouling, Dichtungen, Dinghy, Rigg, Anker.',              count: 308, group: 'technik' },
+  satellitenkommunikation:{ icon: '#i-satellite', desc: 'Starlink, Iridium, Garmin inReach, Yellowbrick.',                     count: 221, group: 'technik' },
+  wassersysteme:          { icon: '#i-water',     desc: 'Watermaker, Tanks, Boiler, Pumpen, Schläuche.',                       count:  182, group: 'technik' },
+  funk:                   { icon: '#i-radio',     desc: 'VHF, SSB, DSC, MMSI, Antennen, Funkzeugnisse.',                       count:  68, group: 'technik' },
 
-  mittelmeer:             { icon: '#i-wave',      desc: 'Häfen, Einklarieren, Liegeplätze, Lokales.',                          count: 292, group: 'reviere' },
-  karibik:                { icon: '#i-palm',      desc: 'Inseln, Werften, Hurricane-Holes, Formalitäten.',                     count: 133, group: 'reviere' },
-  atlantik:               { icon: '#i-nav',       desc: 'ARC, Kanaren, Kapverden, Routen & Strategien.',                       count:  86, group: 'reviere' },
-  navigation:             { icon: '#i-map',       desc: 'Seekarten, Plotter, OpenCPN, Navionics, Routenplanung.',              count:  65, group: 'reviere' },
-  wetter:                 { icon: '#i-weather',   desc: 'GRIB, PredictWind, Windy, Hurricane-Saison.',                         count:  69, group: 'reviere' },
+  mittelmeer:             { icon: '#i-wave',      desc: 'Häfen, Einklarieren, Liegeplätze, Lokales.',                          count: 350, group: 'reviere' },
+  karibik:                { icon: '#i-palm',      desc: 'Inseln, Werften, Hurricane-Holes, Formalitäten.',                     count: 151, group: 'reviere' },
+  atlantik:               { icon: '#i-nav',       desc: 'ARC, Kanaren, Kapverden, Routen & Strategien.',                       count:  91, group: 'reviere' },
+  navigation:             { icon: '#i-map',       desc: 'Seekarten, Plotter, OpenCPN, Navionics, Routenplanung.',              count:  81, group: 'reviere' },
+  wetter:                 { icon: '#i-weather',   desc: 'GRIB, PredictWind, Windy, Hurricane-Saison.',                         count:  76, group: 'reviere' },
 
-  sicherheit:             { icon: '#i-lifebuoy',  desc: 'Rettungsmittel, Orca, Piraterie, Sicherheitsequipment.',              count:  148, group: 'sicherheit' },
-  versicherungen:         { icon: '#i-shield',    desc: 'Yacht-, Kasko-, Krankenvers., Blauwasser-Konditionen.',               count: 174, group: 'sicherheit' },
+  sicherheit:             { icon: '#i-lifebuoy',  desc: 'Rettungsmittel, Orca, Piraterie, Sicherheitsequipment.',              count:  160, group: 'sicherheit' },
+  versicherungen:         { icon: '#i-shield',    desc: 'Yacht-, Kasko-, Krankenvers., Blauwasser-Konditionen.',               count: 182, group: 'sicherheit' },
 
-  lossegler:              { icon: '#i-sailboat',  desc: 'Community, Treffen, Yachtkauf, Langfahrt-Alltag.',                    count: 106, group: 'sonstiges' },
-  diverses:               { icon: '#i-box',       desc: 'Was sonst noch an Bord kommt — Fischen, Tauchen, …',                  count: 224, group: 'sonstiges' },
+  lossegler:              { icon: '#i-sailboat',  desc: 'Community, Treffen, Yachtkauf, Langfahrt-Alltag.',                    count: 122, group: 'sonstiges' },
+  diverses:               { icon: '#i-box',       desc: 'Was sonst noch an Bord kommt — Fischen, Tauchen, …',                  count: 251, group: 'sonstiges' },
 };
 
 // ───── Kennzahlen aus TOPIC_META ableiten, damit sie nicht auseinanderlaufen ─────
@@ -1836,7 +1853,7 @@ function mdToHtml(md) {
 function buildIndex() {
   const index = [];
   for (const [key, text] of Object.entries(PAGES)) {
-    if (key === 'index') continue; // overview is curated
+    if (key === 'index' || key === 'statistik') continue; // overview is curated, Statistik ist Zahlenwerk
     const sections = text.split(/\n(?=##? )/);
     for (const section of sections) {
       if (!section.trim()) continue;
@@ -1939,7 +1956,7 @@ let eintragIndex = null;
 function baueEintragIndex() {
   const idx = [];
   for (const [key, text] of Object.entries(PAGES)) {
-    if (key === 'index' || key === 'methodik') continue;
+    if (key === 'index' || key === 'methodik' || key === 'statistik') continue;
     let h2 = '', h3 = '';
     for (const line of text.split('\n')) {
       if (/^##\s/.test(line)) { h2 = line.replace(/^#+\s*/, ''); h3 = ''; continue; }
@@ -2160,7 +2177,7 @@ function showPage(key) {
     const content = PAGES[key] || '# Nicht gefunden';
     const md = $('#md-content');
     md.innerHTML = safetyNoteHtml(key) + mdToHtml(content);
-    const erklaerseite = key === 'methodik';
+    const erklaerseite = key === 'methodik' || key === 'statistik';
     const leer = { datiert: 0, zeitkritisch: 0, historisch: 0, alterUnbekannt: 0 };
     const zeit = erklaerseite ? leer : annotateEintrag(md);
     const n = erklaerseite ? 0 : annotateProvenance(md);

@@ -52,6 +52,7 @@ Gesammeltes Segler-Wissen aus den Trans-Ocean WhatsApp-Gruppen — aufbereitet a
 - Offline nutzbar — `index.html` und `data.js`, keine externen Abhängigkeiten
 - Helles Layout im Stil eines Logbuchs
 - Versionsanzeige mit Verlauf, direkt in der Oberfläche
+- Statistik-Seite: was mit jeder Auswertung neu hinzukam, je Kapitel und Quellgruppe
 
 ## Versionierung
 

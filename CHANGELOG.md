@@ -14,6 +14,8 @@ Aktualisiert wurden überholte Angaben, u. a. Dieselpreis und Grenzformalitäten
 
 **Herkunft direkt aus der Erhebung:** Jeder neue Eintrag trägt Quellgruppe und Fundzeitraum, weil er aus den Nachrichten einer bekannten Gruppe verdichtet wurde; ein nachträglicher Textabgleich war nicht nötig. Damit haben jetzt 1.177 Einträge eine Herkunftsangabe.
 
+**Neue Seite Statistik:** Entwicklung des Bestands je Version, neue Einträge je Kapitel und Quellgruppe, Fundzeitraum und neue Abschnitte. Die Startseite zeigt Bestand und Zeitraum bis September 2026, unter dem Namen in der Seitenleiste stehen Version und Stand.
+
 **Bewusst nicht übernommen:** Beiträge aus ausgeschlossenen Gruppen (Medizin, Nothilfe, Klönschnack, Treffen, Marktplatz) wurden nicht gelesen. In den ausgewerteten Gruppen blieben Gesundheitsthemen, Verkaufsangebote, persönliche Auseinandersetzungen und wiedererkennbare Einzelfälle aussen vor, ebenso eine in einer Gruppe geteilte, KI-erstellte Zusammenstellung zu Mittelmeer-Wirbelstürmen. Wertende Aussagen über einzelne Personen wurden auf die Sache reduziert.
 
 ## Version 2.4 — 13. August 2026
