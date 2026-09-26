@@ -1212,7 +1212,7 @@
     </button>
     <div class="sf-row">
       <span>© J.J.Reichel</span>
-      <span>2.712 Einträge</span>
+      <span>3.045 Einträge</span>
     </div>
   </div>
 </aside>
@@ -1227,7 +1227,7 @@
     </div>
     <div class="search-wrap" id="search-wrap">
       <svg class="search-icon"><use href="#i-search"/></svg>
-      <input type="search" id="search" placeholder="In 2.712 Einträgen suchen — Starlink, Anker, Werft…" autocomplete="off" spellcheck="false">
+      <input type="search" id="search" placeholder="In 3.045 Einträgen suchen — Starlink, Anker, Werft…" autocomplete="off" spellcheck="false">
       <span class="search-kbd">⌘ K</span>
       <button id="clear-search" title="Suche zurücksetzen">✕</button>
     </div>
@@ -1340,6 +1340,8 @@
 // ───── Versionierung ─────
 // Einzige Pflegestelle: neue Version oben ergänzen, Nebenversion je Roadmap-Phase hochzählen.
 const VERSIONS = [
+  { v: '3.0', date: '26. September 2026', title: 'Auswertung bis September 2026',
+    desc: 'Gruppen vom 7. August bis 26. September 2026 ausgewertet: 335 neue und 8 aktualisierte Einträge, Bestand jetzt 3.045. Schwerpunkte: Starlink-Tarifwechsel und 30-Tage-Regel, Winterplätze Mittelmeer 2026/27, Starten und Starterbatterie, Ankerwinsch-Fehlersuche, Hurrikan-Saison Karibik. Neue Einträge tragen Quellgruppe und Fundzeitraum direkt aus der Erhebung.' },
   { v: '2.4', date: '13. August 2026', title: 'Phase 4 · Fragen statt blättern',
     desc: 'Frageoberfläche über der Sammlung: eine Frage in eigenen Worten findet die passenden Einträge, mit Leitbegriff, Wortzerlegung und offengelegten Lücken. Bewusst ohne Sprachmodell — es wird gefunden, nicht formuliert, und die Seite bleibt offline nutzbar. Die Governance-Frage der Phase 4 ist damit nicht berührt und bleibt offen.' },
   { v: '2.3', date: '12. August 2026', title: 'Phase 3 · Aktualität lösen',
@@ -1354,7 +1356,7 @@ const VERSIONS = [
     desc: 'Aufbau als durchsuchbare Wissensdatenbank mit 1.629 Einträgen.' },
 ];
 const VERSION_NEXT = [
-  { v: '2.5', title: 'Phase 4 · Governance-Entscheidung' },
+  { v: '3.1', title: 'Phase 4 · Governance-Entscheidung' },
 ];
 const VERSION = VERSIONS[0];
 

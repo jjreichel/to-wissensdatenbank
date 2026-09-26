@@ -4,46 +4,46 @@ Gesammeltes Segler-Wissen aus den Trans-Ocean WhatsApp-Gruppen — aufbereitet a
 
 🌐 **Online:** https://jjreichel.github.io/to-wissensdatenbank/
 
-**Version 2.4** · 2.712 Einträge · 15 Themen · ausgewertet August 2025 bis August 2026
+**Version 3.0** · 3.045 Einträge · 15 Themen · ausgewertet August 2025 bis September 2026
 
 ---
 
 ## Inhalt
 
-**Technik an Bord** — 1.415 Einträge
+**Technik an Bord** — 1.581 Einträge
 
 | Thema | Inhalt | Einträge |
 |-------|--------|---------:|
-| Elektrik | Batterien, LiFePO4, Solar, Windgeneratoren, Victron, AIS/VHF, Blitzschutz | 385 |
-| Motorentechnik | Dieselmotoren, Kraftstoff, Filter, Turbo, Propeller, Wellenanlage | 329 |
-| Mechanik | Werften, Antifouling, Dichtungen, Dinghy, Rigg, Anker | 277 |
-| Satellit | Starlink, Iridium, Garmin inReach, SIM-Karten, Router | 195 |
-| Wassersysteme | Watermaker, Tanks, Boiler, Pumpen, Sanitär | 165 |
-| Funk | VHF, SSB/HF, DSC, MMSI, Antennen, Funkzeugnisse | 64 |
+| Elektrik | Batterien, LiFePO4, Solar, Windgeneratoren, Victron, AIS/VHF, Blitzschutz | 432 |
+| Motorentechnik | Dieselmotoren, Kraftstoff, Filter, Turbo, Propeller, Wellenanlage | 370 |
+| Mechanik | Werften, Antifouling, Dichtungen, Dinghy, Rigg, Anker | 308 |
+| Satellit | Starlink, Iridium, Garmin inReach, SIM-Karten, Router | 221 |
+| Wassersysteme | Watermaker, Tanks, Boiler, Pumpen, Sanitär | 182 |
+| Funk | VHF, SSB/HF, DSC, MMSI, Antennen, Funkzeugnisse | 68 |
 
-**Reviere** — 645 Einträge
-
-| Thema | Inhalt | Einträge |
-|-------|--------|---------:|
-| Mittelmeer | Häfen, Winterlager, Einklarieren, Bürokratie, lokale Adressen | 292 |
-| Karibik | Einklarierung, Inseln, Werften, Hurricane-Holes | 133 |
-| Atlantik | Überquerungsrouten, ARC, Kanaren, Kapverden | 86 |
-| Navigation | Seekarten, Plotter, OpenCPN, Navionics, Tablets | 65 |
-| Wetter | GRIB, PredictWind, Windy, Routing, Hurricane-Saison | 69 |
-
-**Sicherheit** — 322 Einträge
+**Reviere** — 749 Einträge
 
 | Thema | Inhalt | Einträge |
 |-------|--------|---------:|
-| Sicherheit | Rettungswesten, MOB, EPIRB, Brandschutz, Orca, Piraterie | 148 |
-| Versicherungen | Yacht-, Kasko- und Krankenversicherung für Langfahrt | 174 |
+| Mittelmeer | Häfen, Winterlager, Einklarieren, Bürokratie, lokale Adressen | 350 |
+| Karibik | Einklarierung, Inseln, Werften, Hurricane-Holes | 151 |
+| Atlantik | Überquerungsrouten, ARC, Kanaren, Kapverden | 91 |
+| Navigation | Seekarten, Plotter, OpenCPN, Navionics, Tablets | 81 |
+| Wetter | GRIB, PredictWind, Windy, Routing, Hurricane-Saison | 76 |
 
-**Weiteres** — 330 Einträge
+**Sicherheit** — 342 Einträge
 
 | Thema | Inhalt | Einträge |
 |-------|--------|---------:|
-| Lossegler | Community, Treffen, Yachtkauf, Langfahrt-Alltag, Azoren, Biskaya | 106 |
-| Diverses | Orcas, Angeln, Tauchen, 3D-Druck, Rotes Meer, Bordelektronik | 224 |
+| Sicherheit | Rettungswesten, MOB, EPIRB, Brandschutz, Orca, Piraterie | 160 |
+| Versicherungen | Yacht-, Kasko- und Krankenversicherung für Langfahrt | 182 |
+
+**Weiteres** — 373 Einträge
+
+| Thema | Inhalt | Einträge |
+|-------|--------|---------:|
+| Lossegler | Community, Treffen, Yachtkauf, Langfahrt-Alltag, Azoren, Biskaya | 122 |
+| Diverses | Orcas, Angeln, Tauchen, 3D-Druck, Rotes Meer, Bordelektronik | 251 |
 
 ## Features
 
@@ -59,18 +59,19 @@ Die **Hauptversion** steht für den Stand der Sammlung, die **Nebenversion** fü
 
 | Version | Stand | Inhalt |
 |---------|-------|--------|
-| **2.4** | August 2026 | Phase 4 · Frageoberfläche über der Sammlung, ohne Sprachmodell |
+| **3.0** | September 2026 | Auswertung bis September 2026, 335 neue und 8 aktualisierte Einträge, Bestand 3.045 |
+| 2.4 | August 2026 | Phase 4 · Frageoberfläche über der Sammlung, ohne Sprachmodell |
 | 2.3 | August 2026 | Phase 3 · Aktualität lösen — zeitkritische Einträge gekennzeichnet, Verfallslogik, Korrektur-Kanal |
 | 2.2 | August 2026 | Phase 2 · Transparenz herstellen — Methodik-Seite, gemessene Quellgruppen-Matrix, Belegdichte, Quellgruppe und Fundzeitraum für 834 Einträge, Sicherheitshinweise |
 | 2.1 | August 2026 | Phase 1 · Vertrauen sichern — Bestandsprüfung, Grundsätze, Fundstellen-Verfahren |
 | 2.0 | August 2026 | Auswertung bis August 2026, Bestand auf 2.712 Einträge erweitert |
 | 1.0 | April 2026 | Erste Fassung mit 1.629 Einträgen |
 
-Geplant ist 2.5 für die Governance-Entscheidung der Phase 4. Der vollständige Verlauf steht im [Changelog](CHANGELOG.md) und ist in der Oberfläche über die Versionsanzeige abrufbar.
+Geplant ist 3.1 für die Governance-Entscheidung der Phase 4. Der vollständige Verlauf steht im [Changelog](CHANGELOG.md) und ist in der Oberfläche über die Versionsanzeige abrufbar.
 
 ## Quelle
 
-Aus Trans-Ocean WhatsApp-Gruppen extrahiertes Wissen. Ausgewertet: August 2025 bis August 2026.
+Aus Trans-Ocean WhatsApp-Gruppen extrahiertes Wissen. Ausgewertet: August 2025 bis September 2026.
 
 Veröffentlicht wird ausschließlich verdichtetes Sachwissen — keine Chatverläufe, keine Zitate, keine Urheber, kein Personenbezug. Welche Gruppen ausgewertet werden und welche **dauerhaft ausgeschlossen** sind (u. a. Frauen-, Kinder- und Medizingruppen), steht verbindlich in den **[Grundsätzen](GRUNDSAETZE.md)**.
 

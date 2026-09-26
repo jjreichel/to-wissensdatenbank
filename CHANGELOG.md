@@ -4,6 +4,18 @@ Dokumentiert Löschungen, Anonymisierungen und Änderungen an den [Grundsätzen]
 
 ---
 
+## Version 3.0 · 26. September 2026
+
+**Auswertung bis September 2026.** Die zugelassenen Quellgruppen wurden für den Zeitraum vom 7. August bis 26. September 2026 ausgewertet, rund 4.000 neue Nachrichten aus 25 Gruppen. Ergebnis: **335 neue und 8 aktualisierte Einträge**, der Bestand wächst von 2.712 auf **3.045**.
+
+Schwerpunkte: Starlink-Tarifwechsel (Personal Maritime) und die 30-Tage-Regel in der Praxis, Buchungslage für Winterplätze 2026/27 im Mittelmeer, Starten und Starterbatterie, Ankerwinsch-Fehlersuche, galvanische Korrosion an Welle und Anode, Hurrikan-Saison und US-Visum in der Karibik, Biskaya-Absprunghäfen, Karten und Plotter.
+
+Aktualisiert wurden überholte Angaben, u. a. Dieselpreis und Grenzformalitäten in Gibraltar, Cartagena und Olbia, Ozeanmodus-Preis bei Starlink, Orion XS (Laden der Starterbatterie aus der Hausbank) sowie die Erreichbarkeit eines Versicherers, die jetzt als umstritten dargestellt ist.
+
+**Herkunft direkt aus der Erhebung:** Jeder neue Eintrag trägt Quellgruppe und Fundzeitraum, weil er aus den Nachrichten einer bekannten Gruppe verdichtet wurde; ein nachträglicher Textabgleich war nicht nötig. Damit haben jetzt 1.177 Einträge eine Herkunftsangabe.
+
+**Bewusst nicht übernommen:** Beiträge aus ausgeschlossenen Gruppen (Medizin, Nothilfe, Klönschnack, Treffen, Marktplatz) wurden nicht gelesen. In den ausgewerteten Gruppen blieben Gesundheitsthemen, Verkaufsangebote, persönliche Auseinandersetzungen und wiedererkennbare Einzelfälle aussen vor, ebenso eine in einer Gruppe geteilte, KI-erstellte Zusammenstellung zu Mittelmeer-Wirbelstürmen. Wertende Aussagen über einzelne Personen wurden auf die Sache reduziert.
+
 ## Version 2.4 — 13. August 2026
 
 **Frageoberfläche über der Sammlung.** Eine Frage in eigenen Worten, und die passenden Einträge erscheinen — mit Kapitel, Abschnitt und allen Markierungen zu Belegdichte, Herkunft und Aktualität.
